@@ -8,6 +8,7 @@ all: build/main.pdf
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
 # build/main.pdf: plots/plot1.pdf plots/plot2.pdf plots/plot3.pdf plots/TEM00.pdf plots/TEM10.pdf
 
+
 build/main.pdf: FORCE | build
 	  TEXINPUTS=build: \
 	  BIBINPUTS=build: \
