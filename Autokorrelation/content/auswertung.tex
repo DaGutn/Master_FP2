@@ -13,7 +13,11 @@
         \label{fig:Original}
     \end{figure}
     \FloatBarrier
-    Die blaue Autokorrelationsspur in \autoref{fig:Original} (rechts) wird durch eine Gauß-Funktion der Form ............... gefittet.
+    Die blaue Autokorrelationsspur in \autoref{fig:Original} (rechts) wird durch eine Gauß-Funktion der Formel
+    \begin{equation}
+        I(t) = A \cdot \exp\left(-4\ln(2)\left(\frac{t}{\Delta\tau}\right)^2\right)
+    \end{equation}
+    gefittet, wobei $\Delta\tau$ die Halbwertsbreite ist.
     Die dabei benutzten Werte sind mit einem breiten blauen durchsichtigen Streifen markiert und die Gaußglocke wird durch eine rot gestrichelte Linie dargestellt.
     Es sind zwei Schultern zu erkennen, weshalb die Gaußglocke an die oberen Werte angepasst wird.
     Aus dem Fit-Parameter der Halbwertsbreite der Autokorrelationsspur ergibt sich die Pulsdauer
