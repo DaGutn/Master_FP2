@@ -1,36 +1,23 @@
 \newpage
 \section{Diskussion}
-\label{sec:conclusion}
+\label{sec:disskussion}
 
-Wie zu erwarten ist bei der Messung ohne Strain-Gauge-Nachregelung \ref{fig:A1}
-eine deutliche Verzerrung der Struktur erkennbar.
-Die Verzerrung ist auch mit Nachregelung \ref{fig:A2} nicht vollständig verschwunden,
-wie an einer $4.7\,\si{\percent}$ Abweichung der Kreisdurchmessergröße in x-Richtung gegenüber der y-Richtung zu erkennen ist.
-Insgesammt ist die Struktur mit $2.0\,\si{\percent}$ Abweichung etwas kleiner als in der Anleitung angegeben.
+Es wurde ein Laser mit einer Pulsdauer von, nach technischen Angaben, \qty{100}{fs} verwendet.
+Die Messung der Autokorrelationsspur des Lasers ohne jegliche Gegenstände im Strahlengang ergibt eine Pulsdauer von \qty{87,6}{fs}, was eine Abweichung von $12,4\,\%$ zum Theoriewert darstellt.
+Ein möglicher Grund für diese Abweichung könnte sein, dass die in \autoref{fig:Original} (rechts) zu sehenden Schultern nicht in die Ausgleichsrechnung miteinbezogen wurden.
 
-Bei der Quadratstruktur weicht die gemessene gemittelte Größe in x-Richtung um $3.3\,\si{\percent}$ von der y-Richtung ab.
-Insgesammt ist auch hier die Struktur mit $0.8\,\si{\percent}$ Abweichung minimal kleiner als angegeben.
+Die Messungen, wo die beiden Bandpassfilter in den Strahlengang gestellt wurden bestätigt die Energie-Zeit-Unschärferelation.
+Die Bandpassfilter begrenzen die Unschärfe der Energie bzw. der Wellenlänge, erhöhen somit die Unschärfe der Zeit und verbreitern folglich die gemessene Autokorrelationsspur in der Zeit.
+Wie zu erwarten ist die Pulsdauer für den \qty{12}{nm}-Bandpassfilter noch größer als die für den \qty{30}{nm}-Bandpassfilter.
 
-Die Streifenstruktur ist $1.2\,\si{\percent}$ größer gemessen als angegeben.
+Die Ergebnisse der Messungen mit verschiedenen Medien im Strahlengang decken sich auch mit der Theorie.
+Die Form eines Laserpulses, der ein dispersives Medium passiert hängt von der Strecke in dem Medium ab.
+Je länger die Strecke, desto mehr werden die verschiedenen Frequenzkomponenten des Pulses durch ihre verschiedenen Phasengeschwindigkeiten verschoben und desto breiter wird der Puls.
+In \autoref{fig:Original} (links) ist zu erkennen, dass es sich hier um keine exakt monochromatische Laserstrahlung handelt.
+Das heißt also, dass die Pulse eine gewisse Dispersion erfahren.
+Die Pulsdauern in \autoref{tab:Glas} werden größer mit steigender Dicker des Glasblocks.
+Es ist auch sinvoll, dass die Pulsdauer nach dem Durchgang durch den \qty{12}{mm}-Block Si viel stärker verbreitert wird, als beim Durchgang durch Glas ähnlicher Dicke, da mit größerem Brechungsindex $n$ auch die Dispersion steigt.
 
-
-Bei den Messungen der CD, DVD und Blu-Ray fällt auf, dass die Pittiefe viel geringer gemessen wurde 
-als in der Literatur angegeben \ref{tab:CD1}. Wahrscheinlich ist, dass hier die Höhenkalibrierung nicht korrekt funktioniert hat.
-Auch die maximale Pitlänge hat recht große Abweichungen im Vergleich zur Literatur. Dies lässt sich jedoch wahrscheinlich damit begründen,
-dass in dem jeweils kleinen vermessenen Ausschnitt kein maximal langes Pit vorhanden war.
-Die anderen Abweichungen sind im Vergleich kleiner und können wahrscheinlich dadurch erklärt werden, dass die Ebenenkorrektur nicht so gut funktioniert hat wie bei der Mikrostruktur.
-In Bild \ref{fig:CD_A} ist trotz Korrektur noch ein eindeutiger Untergund zu erkennen. Außerdem wurde die Bestimmung der Maße bei der
-Blu-Ray wegen flacheren Pitabfällen ungenauer.
-
-Die ermittelte Speicherkapazität von $(1.77\pm0.05)\,$GB weicht um $164.6\,\si{\percent}$ vom Literaturwert $650\,$GB ab \cite{CD}.
-Bei der Berechnung hier wurde jedoch nicht der Lead-In, sowie der Lead-Out Bereich einer CD
-beachtet, die die Speicherkapazität verringern. Außerdem sind weit mehr Bits zur Speicherung notwendig, unter
-anderem zur Fehlerkorrektur und Synchronisation \cite{CD2}.Es ist jedoch davon auszugehen, dass 
-die Abweichung noch immer zu groß ist 
+Die Unsicherheiten der Anpassungsparameter und somit der Pulsdauern wurden weggelassen, da die Bereiche auf denen die Fits beruhen für jede Messung anders gewählt worden sind und die daraus entstandenen Unsicherheiten nicht vergleichbar wären.
 
 
-
-Die Kraft-Abstandskurven weisen alle erwarteten Merkmale auf.
-Da bei den Berechnungen jeweils nur die auftretenden Größenordnungen aufgezeigt werden sollten, 
-ist kein exakter Vergleich mit der Literatur notwendig.
-Die Adhäsionskräfte liegen in der Größenordnung einiger $10\,\si{\nano\newton}$, die Eindringtiefe in der Größenordnung weniger $100\,\si{\nano\meter}$ und das Elastizitätsmodul von Teflon in der Größenordnung von wenigen $10\,\si{\mega\pascal}$.
