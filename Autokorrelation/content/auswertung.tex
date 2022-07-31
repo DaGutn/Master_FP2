@@ -4,7 +4,7 @@
 \subsection{Pulsdauer ohne Filter bzw. Medien}
     Als Erstes wurde der reine Laserstrahl betrachtet, ohne dass ein Filter oder ein Medium in den Strahlengang gestellt wurde.
     Dazu wurde zuerst das Spektrum in \autoref{fig:Original} (links) aufgenommen.
-    Es ist ein deutliches Peak bei der zentralen Wellenlänge von \qty{1550}{nm} zu erkennen, doch es sind auch ein paar Neben-Peaks bei ca. 1500, 1535 und \qty{1580}{nm} zu sehen.
+    Es ist ein deutliches Peak bei der zentralen Wellenlänge von $1550\,\si{\nano\meter}$ zu erkennen, doch es sind auch ein paar Neben-Peaks bei ca. 1500, 1535 und $1580\,\si{\nano\meter}$ zu sehen.
     \vspace*{-0.3cm}
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}
@@ -22,7 +22,7 @@
     Es sind zwei Schultern zu erkennen, weshalb die Gaußglocke an die oberen Werte angepasst wird.
     Aus dem Fit-Parameter der Halbwertsbreite der Autokorrelationsspur ergibt sich die Pulsdauer
     \begin{equation*}
-        \Delta \tau_{\mathrm{orig}} \approx \qty{87,6}{fs}
+        \Delta \tau_{\mathrm{orig}} \approx 87,6\,\si{\femto\second}
     \end{equation*}
     über die Formel
     \begin{equation}
@@ -31,15 +31,15 @@
 
 \subsection{Pulsdauer mit Bandpassfilter}
     Anschließend wurden Messungen mit einem Bandpassfilter im Strahlengang durchgeführt.
-    Das Einsetzen des \qty{30}{nm}-Bandpassfilters ergibt ein Spektrum mit nur einem prominenten Peak.
-    Außerhalb des Bereiches $\pm\qty{30}{nm}$ um die zentrale Wellenlänge werden die Intensitäten so stark gedämpft, dass diese nicht mehr von der Diode registriert werden.
-    Es ist in \autoref{fig:30nm_Bandpass} (links) jedoch noch ein leichter Neben-Peak bei \qty{1535}{nm} zu erkennen.
-    Das liegt daran, dass dieser Neben-Peak innerhalb des \qty{30}{nm}-Bereiches liegt und nicht ganz herausgefiltert wird.    
+    Das Einsetzen des $30\,\si{\nano\meter}$-Bandpassfilters ergibt ein Spektrum mit nur einem prominenten Peak.
+    Außerhalb des Bereiches $\pm30\,\si{\nano\meter}$ um die zentrale Wellenlänge werden die Intensitäten so stark gedämpft, dass diese nicht mehr von der Diode registriert werden.
+    Es ist in \autoref{fig:30nm_Bandpass} (links) jedoch noch ein leichter Neben-Peak bei $1535\,\si{\nano\meter}$ zu erkennen.
+    Das liegt daran, dass dieser Neben-Peak innerhalb des $30\,\si{\nano\meter}$-Bereiches liegt und nicht ganz herausgefiltert wird.    
     \vspace*{-0.3cm}
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}
         \includegraphics{plots/30nm_Bandpass.pdf} \vspace*{-0.5cm}
-        \caption{Links ist das Spektrum des Laserstrahls bei Durchgang durch einen \qty{30}{nm}-Bandpassfilter dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Gaußglocke (rot gestrichelt) zu sehen.}
+        \caption{Links ist das Spektrum des Laserstrahls bei Durchgang durch einen $30\,\si{\nano\meter}$-Bandpassfilter dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Gaußglocke (rot gestrichelt) zu sehen.}
         \label{fig:30nm_Bandpass}
     \end{figure}
     \FloatBarrier
@@ -50,13 +50,13 @@
     Generell wird der Bereich der im Fit einbezogenen Werte so gewählt, dass die angepasste Funktion den Peak bis leicht unter die Hälfte möglichst genau überlagert.
     Die Anpassungen ergeben die Pulsdauern:
     \begin{align*}
-        \Delta \tau_{\mathrm{bandpass,30}} \approx \qty{172,2}{fs} \\
-        \Delta \tau_{\mathrm{bandpass,12}} \approx \qty{285,9}{fs}
+        \Delta \tau_{\mathrm{bandpass,30}} \approx 172,2\,\si{\femto\second} \\
+        \Delta \tau_{\mathrm{bandpass,12}} \approx 285,9\,\si{\femto\second}
     \end{align*}
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}\vspace*{-1cm}
         \includegraphics{plots/12nm_Bandpass.pdf} \vspace*{-0.5cm}
-        \caption{Links ist das Spektrum des Laserstrahls bei Durchgang durch einen \qty{12}{nm}-Bandpassfilter dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Gaußglocke (rot gestrichelt) zu sehen.}
+        \caption{Links ist das Spektrum des Laserstrahls bei Durchgang durch einen $12\,\si{\nano\meter}$-Bandpassfilter dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Gaußglocke (rot gestrichelt) zu sehen.}
         \label{fig:12nm_Bandpass}
     \end{figure}
     \FloatBarrier
@@ -65,17 +65,17 @@
     \begin{figure}[H]
         \centering\captionsetup{format=plain}\vspace*{-0.5cm}
         \includegraphics{plots/Si_12mm.pdf} \vspace*{-0.5cm}
-        \caption{Links ist das Spektrum des Laserstrahls bei Durchgang durch einen \qty{12}{mm}-Block Si dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Gaußglocke (rot gestrichelt) zu sehen.}
+        \caption{Links ist das Spektrum des Laserstrahls bei Durchgang durch einen $12\,\si{\milli\meter}$-Block Si dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Gaußglocke (rot gestrichelt) zu sehen.}
         \label{fig:Si_12mm}
     \end{figure}
     \FloatBarrier
     Hierbei wurden verschiedene dispersive Medien in den Strahlengang eingesetzt.
-    Als Erstes wurde ein \qty{12}{mm} dicker Block Si benutzt.
+    Als Erstes wurde ein $12\,\si{\nano\meter}$ dicker Block Si benutzt.
     Da die keine Filter verwendet werden, ähnelt das Spektrum in \autoref{fig:Si_12mm} sehr dem in \autoref{fig:Original}.
     Es ist eine deutliche Verbreiterung der Autokorrelationsspur zu erkennen.
     Die zugehörige Pulsdauer ergibt sich zu
     \begin{equation*}
-        \Delta \tau_{\mathrm{Si}} \approx \qty{562,6}{fs}
+        \Delta \tau_{\mathrm{Si}} \approx 562,6\,\si{\femto\second}
     \end{equation*}
     Um einen möglichen Zusammenhang besser erkennen zu können, werden die Autokorrelationsspuren bei verschiedenen Glasdicken in einem Plot in \autoref{fig:Glas} zusammengefasst.
     Es wird das gleiche Verfahren angewandt, wie bei den anderen Messungen.
