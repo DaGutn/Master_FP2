@@ -4,29 +4,33 @@
 \label{sec:Aufbau}
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}
-        \includegraphics[width=0.6\textwidth]{bilder/Aufbau.png}
-        \caption{Hier ist der schematische Aufbau des benutzten AFM dargestellt. \cite{anleitung}}
+        \includegraphics[width=0.9\textwidth]{bilder/Aufbau.jpeg}
+        \caption{Hier ist der schematische Aufbau des Photolumineszenzversuches dargestellt. \cite{anleitung}}
         \label{fig:Aufbau}
     \end{figure}
     \FloatBarrier
-    In diesem Aufbau wird die Probe in x-,y-,z-Richtung durch grobe und feine Justierschrauben und durch piezoelektrische Elemente bewegt.
-    Zur Detektion der Auslenkung des Cantilevers wird die Laserreflektionsmethode verwendet.
-    Dazu wird ein Faserlaser der Wellenlänge $\SI{635}{nm}$ auf die spiegelnde Rückseite des Cantilevers fokussiert und auf eine Viersegment-Photodiode reflektiert.
-    Das Signal des Detektors wird dazu benutzt die Auslenkung des Cantilevers über eine Closed-Loop konstant zu halten, die die z-Position der Probe nachregelt.
-    Die Probe wird mithilfe der Piezoelemente abgerastert und die Bewegung der Probe wird an jeden Punkt als Höheninformation aufgenommen.
-    Dehnungsmessstreifen an den Piezoelementen in der xy-Ebene messen die genaue laterale Position der Probe und stellen somit sicher, dass die in \autoref{sec:piezo} besprochenen Störungen keine Auswirkung auf die gemessenen AFM-Bilder haben.
+    Als Anregungslaser werden Diodenlaser benutzt.
+    Dazu sind zwei Strahlarme aufgebaut.
+    Der Erste besteht aus einer \qty{405}{nm}-Laserdiode deren Leistung verstellt werden kann, einem variierbaren Neutraldichtefilter (ND-Filter), der eine einfachere Veränderung der Laserleistung ermöglicht und einem Glan-Taylor-Prisma zur Polarisierung des Lichtstrahls.
+    Beim Anderen werden Diodenlaser der Wellenlängen 450, 520 und \qty{635}{nm} eingesetzt und auf einen dichroitischen Spiegel eingestellt, der Licht unterhalb \qty{425}{nm} transmitiert und Licht oberhalb reflektiert.
+    Dieser Aufbau ermöglicht ein schnelles Wechseln des für die Messung benutzten Anregungslasers, durch einfaches An- und Ausschalten.
 
+    Es werden drei Proben von in Toluol gelösten verschieden großen kolloidalen Nanokristallen aus CdSe in den Strahlengang gestellt, sodass Photolumineszenz entsteht.
+    Eine vierte Probe enthält Kohlenstoff-Quantenpunkte.
+    Im Anschluss wird das Photolumineszenzlicht durch eine Sammellinse kollimiert und durch eine $\lambda/2$-Platte, als auch ein Glan-Taylor-Prisma und einen Interferenzfilter zum herausfiltern des Anregungslichtes geschickt.
+    Das resultierende Licht wird über eine Glasfaser in ein Spektrometer eingekoppelt, welches mit einem Computer verbunden ist und das Frequenzspektrum des Lichtes in Echtzeit darstellt.
+    Um das Rauschen zu verringern kann die Integrationszeit hochgestellt werden.
+    In der \autoref{fig:Aufbau} ist dies nicht dargestellt worden, jedoch wird der Aufbau nach der Probe unter einem Winkel aufgestellt, sodass Reflektionen des Anregungslichtes noch weiter minimiert werden.
+    
+    
 \subsection{Durchführung}
 \label{sec:Durchfuehrung}
-    Die Prozedur zum Messen des AFM-Bildes ist für alle benutzten Proben gleich.
-    Zuerst wird die Probe mit einer Pinzette möglichst auf die Mitte der Stage gelegt.
-    Die Stage ist dabei so weit wie möglich von der Spitze entfernt um diese nicht aus Versehen zu beschädigen.
-    Danach wird die Grobjustierschraube benutzt, um die Probe so nah an die Spitze anzunähern, dass der Abstand mit dem bloßen Auge nicht mehr zu erkennen ist.
-    Im Anschluss daran wird langsam an der Feinjustierschraube gedreht, bis auf der der Laserspot in der Software der Viersegment-Photodiode in den Ursprung springt.
-    Bei angeschalteter Nachregelung wird so lange weitergedreht, dass die Spannung des z-Piezoelements \SI{25}{V} anzeigt, sodass die Spannung im Intervall $[0,50]\,$V variiert werden kann.
-    Es wurden immer Scans mit wenigen Rasterpunkten und hoher Scangeschwindigkeit durchgeführt, damit man einen Überblick über den betrachteten Scanbereich bekam und die jeweils gesuchte Struktur schnell gefunden werden konnte.
+    Zuerst wurde der Strahlengang wie in \autoref{sec:Aufbau} dargelegt aufgebaut.
+    Danach wurde der \qty{405}{nm}-Laser bei einer Leistung von \qty{1}{mW} verwendet, um die Spektren aller vier Proben aufzunehmen.
+    Als Nächstes wurde die Kombination der $\lambda/2$-Platte und des Glan-Taylor-Prismas zur Untersuchung der linearen Polarisation der Photolumineszenzsstrahlung genutzt.
+    Dabei wurde ein Spektrum für einen Winkel von 0° zwischen den optischen Achsen der Verzörgerungsplatte und des Prismas und ein Spektrum für einen Winkel von 90°.
+    Um die Abhängigkeit der Photolumineszenz-Signale von der Laserleistung zu betrachten wurde die Intensität des Lasers mit dem ND-Filter variiert und dabei PL-Spektren aufgenommen.
+    Zur Einstellung der benutzten Laserleistung wurde ein Detektor zwischen den dichroitischen Spiegel und die Probe gestellt.
+    Zum Schluss wurden die PL-Spektren wie bei der ersten Messung mit den anderen drei Lasern aufgenommen.
 
-    Als Erstes sollten $20 \times 20\, \mu$m große Teilbereiche einer bekannten Mikrostruktur gemessen werden mit den Scanparametern $250 \times 250$ Pixel und der Scangeschwindigkeit $100$Pixel/s.
-    Dann wurden Bilder eines Teils einer CD [$10 \times 10\, \mu$m, $250 \times 250$ Pixel, $100$Pixel/s], einer DVD [$5 \times 5\, \mu$m, $250 \times 250$ Pixel, $100$Pixel/s] und einer Bluray [$2 \times 2\, \mu$m, $250 \times 250$ Pixel, $50$Pixel/s] aufgenommen.
-    Als Letztes werden mehrere Kraft-Abstands-Kurven für verschiedene Materialien gemessen.
-    Dazu wurde die Nachregelung des z-Piezos ausgestellt.
+    Aufgrund der nicht-rotationssymmetrischen Grundfläche der Quarzfläschchen wurden diese bei jeder Messung so gedreht, dass das Photolumineszenzignal so groß wie möglich und das zu den Reflektionen des Lasers gehörende Signal so klein wie möglich sei.

@@ -108,6 +108,7 @@ target/
 .ipynb_checkpoints
 
 # Data folders
+data/
 plots/
 
 # IPython
