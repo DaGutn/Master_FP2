@@ -3,10 +3,12 @@ Die Erfindung des \glqq scanning tunneling microscope\grqq (STM) machte erstmals
 Das grundlegende Konzept beruht dabei auf der Nutzung des stark abstandsabhängigen Tunnelstroms zwischen der Probe und einer scharfen Spitze.
 Eben dieses Funktionsprinzip stellt eine intrinsische Begrenzung des STM dar.
 Nur metallische Oberflächen können mit dieser Methode betrachtet werden.
-Das \glqq atomic force microscope\grqq (AFM) macht es möglich auch nicht-leitende Materialien aufzulösen, da hierbei die Kraft zwischen Spitze und Probe bei Distanzen von ca. $\SI{1}{nm}$ ausgenutzt wird.
-Es bildet die Weiterentwicklung des STM und des stylus profilometers, dessen Auflösung durch die Größe seiner Spitze ($\sim 1\mu m$) begrenzt ist.
+Das \glqq atomic force microscope\grqq (AFM) macht es möglich auch nicht-leitende Materialien aufzulösen.
+Hierbei wird eine auf einem Cantilever angebrachte Spitze benutzt, um die intermolekulare Kraft zwischen Spitze und Probe bei Distanzen von ca. $\SI{1}{nm}$ über die Auslenkung des Cantilevers zu bestimmen.
+So kann ein Höhenprofil der Probe durch Abrastern der Probe erzeugt werden.
+Das AFM bildet die Weiterentwicklung des STM und des \glqq stylus profilometers\grqq, dessen Auflösung durch die Größe seiner Spitze ($\sim 1\mu m$) begrenzt ist.
 Ein weiterer gravierender Vorteil gegenüber dem STM besteht beim AFM darin, dass es auch an der Luft und bei Raumtemperatur bedient werden kann.
-Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen Normalbedingungen vermessen, um die Leistungskraft dieses Verfahrens bei der Untersuchung ihrer Topographien aufzuzeigen.
+Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen Normalbedingungen vermessen, um die Leistungsfähigkeit des AFM bei der Untersuchung ihrer Topographien aufzuzeigen.
 
 \section{Theorie}
 \subsection{Kraft zwischen Spitze und Probe}
@@ -15,30 +17,32 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     \begin{description}
         \item[Dipol-Dipol-WW:]  Diese Kraft bildet sich zwischen zwei permanent polaren Molekülen aus, die einander anziehen.
         \item[Induktions-WW:]  Kraft zwischen polarem und neutralem Molekül, wobei das Polare dem Neutralen ein magnetisches Dipolmoment induziert.
-        \item[London-Dispersions-WW:]  Diese Kraft wirkt zwischen zwei neutralen Molekülen. Durch Fluktuationen entstehen spontane elektrische Dipole, die sich gegenseitig anziehen.
+        \item[London-Dispersions-WW:]  Diese Kraft wirkt zwischen zwei neutralen Molekülen. Durch quantenmechanisch bedingte Fluktuationen entstehen spontane elektrische Dipole, welche in den umliegenden Molekülen Dipolmomente induzieren. So entsteht eine attraktive Wechselwirkung.
     \end{description}
-    Die letzte überwiegt meist gegenüber den anderen beiden Kräften. \\
+    Da es sich um ein aus einer Vielzahl von Molekülen bestehendes System handelt, ergibt sich die Gesamtwechselwirkung zwischen Spitze und Probe nach dem Gesetz der großen Zahlen als ein konstanter Wert.
+    Die letzte überwiegt meist gegenüber den anderen beiden Kräften, da die wenigsten Moleküle ein großes permanentes Dipolmoment aufweisen. \\
     Unter der Annahme zweier Edelgsatome lässt sich ihr Wechselwirkungspotential mit der Abstandsabhängigkeit
     \begin{equation*}
-        V_{\mathrm{VdW}(r)} \propto -\frac{1}{r^6}
+        V_{\mathrm{VdW}}(r) \propto -\frac{1}{r^6}
     \end{equation*}
     ausdrücken.
 
-    Bei einem Spitzen-Proben Abstand von $< \SI{1}{nm}$ entstehen kurzreichweitige WW aufgrund des Überlapps zwischen den elektronischen Zustandsdichten.
-    Wird der Abstand in fallender Ordnung durchlaufen, so ist die Wechselwirkung erst attraktiv, da durch den Überlapp der äußeren offenen Schalen chemische Bindungen entstehen, die die Gesamtenergie minimieren. \\
-    \setlength{\columnsep}{10pt}
-    \begin{wrapfigure}{r}{0.4\textwidth}
-        \centering\captionsetup{margin={0.5cm,-1cm}, format=plain}
-        \includegraphics[width=0.48\textwidth]{bilder/Lennard_Jones_Potential.png}
-        \caption{Hier ist das Lennard-Jones-Potential, seine zugehörige Kraft und dessen negierte Ableitung dargestellt. \cite{voigtlaender}} \vspace*{-0.5cm}
+    Bei einem Spitzen-Proben Abstand von $< \SI{1}{nm}$ entstehen kurzreichweitige Wechselwirkung (WW) aufgrund des Überlapps zwischen den elektronischen Zustandsdichten.
+    Wird der Abstand verringert, so ist die Wechselwirkung erst attraktiv, da durch den Überlapp der äußeren offenen Schalen chemische Bindungen entstehen, die die Gesamtenergie minimieren. \\
+    \setlength{\columnsep}{15pt}
+    \begin{wrapfigure}{r}{0.55\textwidth}
+        \vspace{-0.5cm}
+        \centering\captionsetup{margin={0.5cm,0cm}, format=plain}
+        \includegraphics[width=0.55\textwidth]{bilder/Lennard_Jones_Potential.png}
+        \caption{Hier ist das Lennard-Jones-Potential dargestellt. \cite{voigtlaender}} \vspace*{-0.5cm}
         \label{fig:Lennard_Jones_Potential}
     \end{wrapfigure}
-    Dann kommen sich die Spitze und Probe so nah, dass die geschlossenen Orbitale überlappen.
+    Bei weiterer Verringerung kommen sich die Spitze und Probe so nah, dass die geschlossenen Orbitale überlappen.
     Die kernnahen Elektronen müssen aufgrund des Pauli-Verbotes in höhere Zustände ausweichen.
     D.h. sie müssen effektiv weiter vom Kern des anderen, an der Wechselwirkung beteiligten, Atoms entfernt sein.
     Diese Wechselwirkung wird durch
     \begin{equation}
-        V_{\mathrm{Pauli}(r)} \propto \frac{1}{r^{12}}
+        V_{\mathrm{Pauli}}(r) \propto \frac{1}{r^{12}}
     \end{equation}
     beschrieben.
     Die gesamte Wechselwirkung zwischen Sptize und Probe lässt sich also in erster Näherung durch das Lennard-Jones-Potential
@@ -47,24 +51,25 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
         \label{eqn:Lennard_Jones_Potential}
     \end{equation}
     schreiben, wobei $U_0$ die Tiefe des Potentialminimums ist und $R_a$ der Abstand ist, bei dem $V(r) = 0$ gilt.
-    Im obersten Graphen in \autoref{fig:Lennard_Jones_Potential} ist das Potential mit den soeben beschriebenen Parametern zu erkennen.
+    In \autoref{fig:Lennard_Jones_Potential} ist das Potential mit den soeben beschriebenen Parametern zu erkennen.
     Die gestrichelte Linie grenzt den repulsiven von dem attraktiven Effekt der Wechselwirkung ab.
 
     Eine weitere Kraft, die bei der Wechselwirkung zwischen Spitze und Probe eine große Rolle spielt, ist die elektrostatische Wechselwirkung.
-    Sie entsteht durch unterschiedliche Austrittsarbeiten bzw. durch eine Ladung auf der Spitze und Probe, sodass eine weitere Kraft auf die Spitze wirkt und auf die Kraft-Abstandskurve Einfluss nimmt.
-    Da dies beim AFM nicht erwünscht ist wird eine Bias-Spannung angelegt, die die Potentialdifferenz ausgleichen soll nach 
+    Sie entsteht durch eine Differenz $\upDelta \Phi$ zwischen den unterschiedliche Austrittsarbeiten bzw. durch eine Ladung auf der Spitze und der Probe, sodass eine weitere Kraft auf die Spitze samt Cantilever wirkt und auf die Kraft-Abstandskurve Einfluss nimmt.
+    Da dies beim AFM nicht erwünscht ist wird eine Bias-Spannung $V_{\mathrm{bias}}$ angelegt, die die Potentialdifferenz $\upDelta V$ ausgleichen soll nach 
     \begin{equation}
-        \Delta V = V_{\mathrm{bias}} - \Delta \Phi \cdot e = 0 \quad \Leftrightarrow \quad V_{\mathrm{bias}} = \Delta \Phi \cdot e \;.
+        \upDelta V = V_{\mathrm{bias}} - \upDelta \Phi \cdot e = 0 \quad \Leftrightarrow \quad V_{\mathrm{bias}} = \upDelta \Phi \cdot e \;.
     \end{equation}
     Die Kraft zwischen Spitze und Probe ist näherungsweise gegeben als
     \begin{equation}
-        F_{el}(z) \approx -\pi \epsilon_0 \frac{R}{z} \cdot \Delta V^2 \;,
+        F_{el}(z) \approx -\pi \epsilon_0 \frac{R}{z} \cdot \upDelta V^2 \;,
     \end{equation}
     wenn die Spitze als Kugel auf einem Kegel und die Probe als unendliche Ebene betrachtet wird, wobei $R$ der Radius der Kugel ist.
-    Es ist zu erkennen, dass die Kraft als Funktion der Bias-Spannung $F_{el}(V_{\mathrm{bias}})$ eine umgedrehte Parabel mit einem Maximum an der Stelle $\Delta \Phi \cdot e$ darstellt.
-    Die Differenz Austrittsarbeit zwischen Spitze und Probe kann also durch Auftragen der Kraft gegen die Bias-Spannung bestimmt werden.
+    Es ist zu erkennen, dass die Kraft als Funktion der Bias-Spannung $F_{el}(V_{\mathrm{bias}})$ eine umgedrehte Parabel mit einem Maximum an der Stelle $\upDelta \Phi \cdot e$ darstellt.
+    Die Differenz der Austrittsarbeit zwischen Spitze und Probe kann also durch Auftragen der Kraft gegen die Bias-Spannung bestimmt werden.
 
 \subsection{Snap-to-Contact}
+\label{sec:Snap}
     Ein wichtiges Konzept um die Funktionsweise von AFM-Messungen im Contact-Mode zu verstehen ist der Snap-to-Contact bzw. Snap-out-of-Contact der Spitze zur Probenoberfläche.
     Im dynamischen Modus wird dieser Snap-to-Contact gemieden, da die Oszillation des Cantilevers sonst wegen des schmalen Potentialminimums gestoppt werden würde, mehr dazu in \autoref{sec:messmodi}.
     Aus diesem Grund werden die Bedingungen für den Snap-to-Contact hier betrachtet.
@@ -73,6 +78,11 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     \begin{equation}
         U_{\mathrm{cant}}(z) = \frac{1}{2}k(z - z_0)^2
         \label{eqn:harm_Potential}
+    \end{equation}
+    und der Kraft
+    \begin{equation}
+        F_{\mathrm{cant}}(z) = k(z - z_0)
+        \label{eqn:harm_Kraft}
     \end{equation}
     aproximiert werden.
     Um den Snap-to-Contact zu erklären werden nun aus den beiden in \autoref{fig:Lennard_Jones_Potential} dargestellten Potentialen \eqref{eqn:Lennard_Jones_Potential} und \eqref{eqn:harm_Potential} die zugehörigen Kräfte abgeleitet und in die Betrachtung einbezogen.
@@ -90,7 +100,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
             \caption{}
             \label{fig:Snap_to_Contact_Kraft}
         \end{subfigure}
-        \caption{\textbf{(a)} Das Lennnard-Jones-Potential für die Spitzen-Proben-WW und ein harmonisches Potential für den Cantilever bei seiner Gleichgewichtsposition $z_0$ bei ausgeschalteter Spitzen-Proben-WW ist dargestellt. \textbf{(b)} Kraft-Abstands-Kurven für verschiedene $z_0$ anhand derer der Snap-to-Contact erklärt wird. \cite{voigtlaender}}
+        \caption{\textbf{(a)} Das Lennnard-Jones-Potential für die Spitzen-Proben-WW und ein harmonisches Potential für den Cantilever bei seiner Gleichgewichtsposition $z_0$ bei ausgeschalteter Spitzen-Proben-WW ist dargestellt. \\ \textbf{(b)} Kraft-Abstands-Kurven für verschiedene $z_0$ anhand derer der Snap-to-Contact erklärt wird. \cite{voigtlaender}}
         \label{fig:Snap_to_Contact}
     \end{figure}
     \FloatBarrier
@@ -104,24 +114,28 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
         && \frac{\partial U_{\mathrm{LJ}}}{\partial z} + k(z - z_0) &= 0 \nonumber\\
         \Leftrightarrow && F_{\mathrm{LJ}} &= -F_{\mathrm{cant}} \;.
     \end{alignat}
-    Dieses Kräfte werden in \autoref{fig:Snap_to_Contact_Kraft} graphisch dargestellt.
-    Dabei sind die blauen Geraden die negative Federkraft bei verschiedenen $z_0$. \\
+    Diese Kräfte werden in \autoref{fig:Snap_to_Contact_Kraft} graphisch dargestellt.
+    Dabei sind die blauen Geraden die negative Federkraft des Cantilevers $-F_{\mathrm{cant}}$ bei verschiedenen $z_0$. \\
     Die hinreichende Bedingung
     \begin{alignat}{2}
         && \frac{\partial U_{\mathrm{LJ}}^2}{\partial^2 z} + k &> 0 \nonumber\\[3pt]
         \Leftrightarrow && \frac{\partial F_{\mathrm{LJ}}}{\partial z} &< k
     \end{alignat}
-    bestimmt, ob es sich bei einem Schnittpunkt des roten und blauen Graphen um ein Minimum handelt.
+    bestimmt, ob es sich bei einem Schnittpunkt des roten Graphen und der blauen Geraden um ein Potentialminimum handelt.
     In \autoref{fig:Snap_to_Contact_Kraft} ist zu erkennen, dass sich der Cantilever bei kleinen Auslenkungen vor dem Punkt c immer im Potentialminimum an der Gleichgewichtsposition $z_0$ befindet.
     Doch wird der Cantilever noch näher an die Probe rangebracht, gibt es plötzlich nur noch ein Minimum an der fallenden Flanke des roten Graphen, in das der Cantilever nun springt.
 
-    Der Snap-out-of-Contact passiert bei größeren Spitzen-Proben-Abständen als $z_0^{\mathrm{A}}$ gibt es auch plötzlich nur noch ein Minimum und es geschieht ein Sprung aus Punkt f nach Punkt a.
+    Der Snap-out-of-Contact passiert bei größeren Spitzen-Proben-Abständen als $z_0^{\mathrm{A}}$. Denn dann gibt es plötzlich nur noch ein Minimum und es geschieht ein Sprung aus Punkt f nach Punkt a.
 
     Zum Einen kann ein größerer Gleichgewichtsabstand des Cantilevers gewählt werden (grüne Gerade), um den Snap-to-Contact im dynamischen Modus zu verhindern.
     Zum Anderen ist es möglich die Federkonstante $k$ so groß zu wählen, dass die Steigung der roten Kurve bei jedem $z_0$ kleiner ist als die der blauen Geraden ist (orange gestrichelte Gerade).
     Das führt dazu, dass es nur einen Schnittpunkt im Graphen bzw. nur ein Potentialminimum gibt und so auch kein Sprung zwischen zwei Minimas passiert.
 
 \subsection{Kraft-Abstands-Kurven}
+    Kraft-Abstands-Kurven werden gemessen, indem die Probe an den Cantilever angenähert wird und seine Auslenkung aufgenommen wird, die über das Hook'sche Gesetz proportional zur Kraft zwischen Probe und Spitze ist.
+    Daraus lassen sich Größen wie die maximale Adhäsionskraft und die Elastizität der Probe bestimmen.
+    Es wird also die Position der Probe $z_{\mathrm{sample}}$ und die Position der Spitze $z_{\mathrm{tip}}$ gegeneinander aufgetragen.
+    Beide Koordinaten sind zum besseren Verständnis in \autoref{fig:Cantilever_Auslenkung} graphisch dargestellt.
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}
         \includegraphics[width=0.55\textwidth]{bilder/Cantilever_Auslenkung.png}
@@ -129,21 +143,35 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
         \label{fig:Cantilever_Auslenkung}
     \end{figure}
     \FloatBarrier
-    Kraft-Abstands-Kurven werden gemessen, indem die Probe an den Cantilever angenähert wird und seine Auslenkung aufgenommen wird, die über das Hook'sche Gesetz proportional zur Kraft zwischen Probe und Spitze ist.
-    Daraus lassen sich Größen wie die maximale Adhäsionskraft und die Elastizität der Probe bestimmen.
-    Es wird also die Position der Probe $z_{\mathrm{sample}}$ und die Position der Spitze $z_{\mathrm{tip}}$ gegeneinander aufgetragen.
-    Beide Koordinaten sind zum besseren Verständnis in \autoref{fig:Cantilever_Auslenkung} graphisch dargestellt.
-    Eine ideale Kraft-Abstands-Kurve ist in \autoref{fig:Kraft_Abstands_Kurve} zu sehen.
-    Nach dem Snap-to-Contact von Punkt c zu Punkt d, bewegen sich Spitze und Probe gemeinsam weiter, weil die Probe die Spitze nach oben auslenkt.
+    Eine ideale aufgenommene Kraft-Abstands-Kurve ist in \autoref{fig:Kraft_Abstands_Kurve} zu sehen.
+    Wie es schon in \autoref{sec:Snap} erklärt wurde, passieren Sprünge zwischen den Potentialminima, wobei das Inset in \autoref{fig:Kraft_Abstands_Kurve} zum Verständnis der Ursachen der Sprünge beitragen soll.
+    Nach dem Snap-to-Contact von Punkt c zu Punkt d, bewegen sich Spitze und Probe gemeinsam weiter, weil die Probe die Spitze nach oben auslenkt, sodass die Kurve linear steigt.
     Eine weiche Probe würde eindellen und die Kurve würde zumindest in der Nähe von Punkt d eine Steigung kleiner eins besitzen, woraus auf die elastischen Eigenschaften der Probe geschlossen werden kann.
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}
         \includegraphics[width=0.5\textwidth]{bilder/Kraft_Abstands_Kurve.png}
-        \caption{Eine schematische Kraft-Abstands-Kurve, wobei blau die Annäherung von Spitze und Probe und rot ihre Entfernung bedeutet. \cite{voigtlaender}}
+        \caption{Hier wird eine schematische Kraft-Abstands-Kurve dargestellt, die tatsächlich so aufgenommen werden könnte, wobei blau die Annäherung von Spitze und Probe und rot ihre Entfernung bedeutet. Das Inset ist eine vereinfachte Darstellung der \autoref{fig:Snap_to_Contact_Kraft} zum Erklären der Sprünge von c nach d und f nach a. \cite{voigtlaender}}
         \label{fig:Kraft_Abstands_Kurve}
     \end{figure}
     \FloatBarrier
-
+    Für die Berechnung des Elastizitätsmoduls wird zunächst die Kraft
+    \begin{equation}
+        F=\frac{2}{\pi}\tan(\alpha)E^*\rho^2
+    \end{equation}
+    benötigt, mit der die Spitze auf die Probe drückt.
+    Dabei wird angenommen, dass die Spitze eine Kegelform hat.
+    $\alpha$ bezeichnet hierbei den halben Öffnungswinkel der Cantileverspitze.
+    $\rho$ bezeichnet die Eindringtiefe der Spitze in die Oberfläche und $E^*$ die oberflächenelastische Konstante,
+    \begin{equation}
+        E^*=\frac{E}{1-\nu^2},
+    \end{equation}
+    mit der Poissonzahl $\nu$ und dem Elastizitätsmodul $E$ \cite{Elasti}, welches die Elastizität des Materials ausdrückt.
+    Somit lassen sich diese Gleichungen umformen zu
+    \begin{equation}
+        E=\frac{F\pi(1-\nu^2)}{2\tan(\alpha)\rho^2},
+    \end{equation}
+    wobei die Eindringtiefe der Spitze in die Teflon-Oberfläche $\rho$ und die Kraft $F$, mit der die Spitze auf die Probe drückt, aus den Messdaten bestimmt werden müssen.
+    
 \subsection{Cantilever und Spitze}
 \label{sec:cantilever}
     \setlength{\columnsep}{25pt}
@@ -158,7 +186,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     
     Da eine atomare Auflösung erreicht werden soll, muss der Cantilever sensitiv genug sein, um durch die Wechselwirkung zwischen zwei einzelnen Atomen ausgelenkt zu werden.
     Als Aproximation wird das Atom A in \autoref{fig:Federkraftkonstante} als ein harmonischer Oszillator mit einer Vibrationsfrequenz von $\omega_{\mathrm{vib}} = 10^{13}\,$Hz und einer Atommasse von $m = 10^{-25}\,$kg angenommen.
-    Beides sind typische Werte für Festkörper.
+    Beides sind typische Werte für Festkörper entnommen aus \cite{wiesendanger}.
     Damit ergibt sich eine kleine Federkonstante von
     \begin{equation}
         \omega_{\mathrm{vib}} = \sqrt{\frac{k}{m}} \qquad \Leftrightarrow \qquad k = \omega_{\mathrm{vib}}^2 m \approx 10\,\si{Nm^{-1}}
@@ -166,18 +194,18 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     für die Atombindung zwischen Atom A und seinen Nachbarsatomen.
     Mit typischen Atomabständen von ca. $10^{-10}\,$m, erhält man in erster Näherung mit dem Hookschen Gesetz Atomkräfte im Bereich von Nanonewton.
     Um sensitiv gegenüber diesen Kräften zu sein, sollte der Cantilever eine Federkonstante in der gleichen Größenordnung wie die Atombindungen besitzen.
-    Im Umkehrschluss heißt das, dass dieser auch im Angströmbereich ausgelenkt wird.
+    Im Umkehrschluss heißt das, dass dieser auch im \r{A}ngströmbereich ausgelenkt wird.
     Die erste Bedingung an den Cantilever ist also, dass er eine kleine Federkraftkonstante haben bzw. weich sein soll.
 
-    Außerdem sollte das AFM vor externen Vibrationen, wie z.B. Gebäudeschwingungen von ca. \SI{100}{Hz}, geschützt sein.
+    Außerdem sollte das AFM vor externen Vibrationen, wie z.B. Gebäudeschwingungen von ca. \SI{100}{Hz}, geschützt sein, da AFM-Bilder über längere Zeitskalen aufgenommen werden und solche Vibrationen Satellitenlinien verursachen können.
     Dies wird durch eine sehr hohe Resonanzfrequenz des Cantilevers $\gg \SI{10}{kHz}$ erreicht, was die zweite Bedingung an den Cantilever darstellt.
     Zusätzlich sind dadurch hohe Scangeschwindigkeiten möglich.
     
     Beide Bedingungen können nach $\omega_{\mathrm{cant}} = \sqrt{\frac{k}{m}}$ nur gleichzeitig erfüllt sein, wenn die Masse des Cantilevers sehr klein ist.
-    Für eine Frequenz von $\omega_{\mathrm{cant}} = \SI{100}{kHz}$ und eine von Federkonstante $k = \SI{10}{Nm^{-1}}$ muss der Cantilever ca. $\SI{1}{\mu m}$ wiegen, um beide Bedingungen zu erfüllen.
+    Für eine Frequenz von $\omega_{\mathrm{cant}} = \SI{100}{kHz}$ und eine von Federkonstante $k = \SI{10}{Nm^{-1}}$ muss der Cantilever ca. $\SI{1}{\micro m}$ wiegen, um beide Bedingungen zu erfüllen.
 
     Die Spitze sollte einen möglichst kleinen Spitzenradius und einen schmalen Abschluss besitzen, da die Strukturen in den AFM-Bilder immer um die Spitzenbreite verbreitert werden.
-    Das gemessene Bild ist also eine Faltung zwischen Spitze und Probentopographie, wie in \autoref{fig:Spitze_Probe_Faltung} zu sehen ist.
+    Das gemessene Bild ist also eine Faltung zwischen der Spitzeform und Probentopographie, wie es in \autoref{fig:Spitze_Probe_Faltung} schematisch skizziert ist.
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}
         \includegraphics[width=0.8\textwidth]{bilder/Spitze_Probe_Faltung.png}
@@ -187,14 +215,15 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
 
 \subsection{Detektion}
 \label{sec:detektion}
-    Wie in \autoref{sec:cantilever} bereits erklärt, wird der Cantilever bei der Messung im Angströmbereich ausgelenkt.
+    Wie in \autoref{sec:cantilever} bereits erklärt, wird der Cantilever bei der Messung im \r{A}ngströmbereich ausgelenkt.
     Die Detektionsmethode sollte das System möglichst nicht stören z.B. durch Kraftauswirkung auf den Cantilever oder Erwärmung.
-    Im folgenden werden ein paar verschiedene Methoden angesprochen.
+    Im Folgenden werden ein paar verschiedene Methoden erläutert.
 
-    \newpage
+    % \newpage
     \subsubsection*{Laserreflektion}
         % \setlength{\columnsep}{50pt}
         \begin{wrapfigure}{r}{0.4\textwidth}
+            \vspace{-0.6cm}
             \centering\captionsetup{margin={0.5cm,-1cm}, format=plain}
             \includegraphics[width=0.4\textwidth]{bilder/Viersegmentphotodiode.png}
             \caption{Schematische Darstellung der Laserreflektionsmethode. \cite{voigtlaender}} \vspace*{-0.3cm}
@@ -212,25 +241,26 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
 
     \subsubsection*{Interferometrie}
         Eine aufbautechnisch aufwändigere optische Methode ist die Interferometriemethode zur Messung der Auslenkung des Cantilevers.
-        Wie auch bei der anderen optischen Methode der Laserreflektion geht die Interaktion mit dem Cantilever nur vom Strahlungsdruck im Bereich von $10^{-12}\,$N aus, was vernachlässigbar klein ist.
+        Es wird der Phasenabstand zwischen dem, am ausgelenkten Cantilever, reflektierten Strahl und einem Referenzstrahl durch Interferenz bestimmt.
+        Daraus kann wiederum die Auslenkung des Cantilevers errechnet werden.
+
+    \subsubsection*{Probleme}
+        Bei den beiden oben genannten optischen Methoden der Detektion geht die Interaktion mit dem Cantilever nur vom Strahlungsdruck im Bereich von $10^{-12}\,$N aus, was vernachlässigbar klein ist.
         Außerdem ist hier die Größe des Cantilevers durch die Wellenlänge nach unten beschränkt, denn das Beugungslimit besagt, dass Licht nicht mehr als auf ca. seine halbe Wellenlänge fokussiert werden kann.
         Dies begrenzt somit die Sensitivität bzw. die Entkopplung von mechanischen Störungen, wie in \autoref{sec:cantilever} besprochen und damit die mögliche Auflösung.
         Ein weiteres Limit der optischen Methoden bildet das Schrotrauschen der Detektoren bei hohen Scangeschwindigkeiten.
         Schrotrauschen entsteht dadurch, dass nur paar Photonen in der kurzen Zeit einer Messung auf die Detektoren treffen und die gemessene Intensität pro Messung stark fluktuiert, nach dem Gesetz der großen Zahlen.
 
-        Es wird der Phasenabstand zwischen dem am ausgelenkten Cantilever reflektierten Strahl und einem Referenzstrahl durch Interferenz bestimmt.
-        Daraus kann wiederum die Auslenkung des Cantilevers errechnet werden.
-
-    \subsubsection*{STM}
-        Eine weitere Möglichkeit bietet die Messung mithilfe eines STM.
-        Durch die extreme räumliche Nähe und einer Potentialdifferenz der STM-Spitze zum Cantilever fließt ein extrem abstandsabhängiger Tunnelstrom, der es ermöglicht eine Sensitivität von $0,01\,\si{\angstrom}$ zu erreichen.
-        Typische Tunnelströme sind jedoch sehr klein (nA) und bedürfen großer Verstärkung.
-        Im dynamischen Messmodi, wo der Cantilever mit Resonanzfrequenzen von $30-100\,$kHz oszilliert würde also kein nennenswerter Tunnelstrom gemessen werden.
-        Das Gleiche gilt für hohe Scangeschwindigkeiten.
-        Aus diesem Grund diese Methode nur für statische Messungen verwendet.
-        Zudem muss der Cantilever sauber sein, um zu verhindern, dass der Tunnelstrom durch Kontaminationen abgeschirmt wird und die STM-Spitze auf den Cantilever aufdrückt, um den Tunnelstrom aufrecht zu erhalten.
-        Einen schwerwiegenden Nachteil bildet der komplizierte Aufbau, da das STM nur im UHV benutzt werden kann.
-        Bei Messungen, die ohnehin im Vakuum und bei tiefen Temperaturen durchgeführt werden müssen, bietet sich diese Methode jedoch an, da optische Detektionsmethoden bei solch thermisch empfindlichen Systemen eine Erwärmung auslösen könnten.
+    % \subsubsection*{STM}
+    %     Eine weitere Möglichkeit bietet die Messung mithilfe eines STM.
+    %     Durch die extreme räumliche Nähe und einer Potentialdifferenz der STM-Spitze zum Cantilever fließt ein extrem abstandsabhängiger Tunnelstrom, der es ermöglicht eine Sensitivität von $0,01\,\si{\angstrom}$ zu erreichen.
+    %     Typische Tunnelströme sind jedoch sehr klein (nA) und bedürfen großer Verstärkung.
+    %     Im dynamischen Messmodi, wo der Cantilever mit Resonanzfrequenzen von $30-100\,$kHz oszilliert würde also kein nennenswerter Tunnelstrom gemessen werden.
+    %     Das Gleiche gilt für hohe Scangeschwindigkeiten.
+    %     Aus diesem Grund diese Methode nur für statische Messungen verwendet.
+    %     Zudem muss der Cantilever sauber sein, um zu verhindern, dass der Tunnelstrom durch Kontaminationen abgeschirmt wird und die STM-Spitze auf den Cantilever aufdrückt, um den Tunnelstrom aufrecht zu erhalten.
+    %     Einen schwerwiegenden Nachteil bildet der komplizierte Aufbau, da das STM nur im UHV benutzt werden kann.
+    %     Bei Messungen, die ohnehin im Vakuum und bei tiefen Temperaturen durchgeführt werden müssen, bietet sich diese Methode jedoch an, da optische Detektionsmethoden bei solch thermisch empfindlichen Systemen eine Erwärmung auslösen könnten.
 
 \subsection{Messmodi}
 \label{sec:messmodi}
@@ -241,7 +271,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     Während des Abrastern der Probe wird die Auslenkung des Cantilevers konstant gehalten, indem der Spitzen-Proben-Abstand über einen Feedbackloop kontinuirlich nachgeregelt wird.
     Zu Anfang der Messung muss deshalb zuerst ein Abstand gewählt werden, welcher eingehalten werden soll.
     Die Spitze kann entweder durch den Snap-to-Contact direkt auf der Probe abgesetzt werden und man arbeitet im repulsiven contact-Bereich, oder der Abstand wird so gewählt, dass man sich noch im attraktiven non-contact-Bereich befindet.
-    Der contact-Modus verursacht größere Schäden an der Probe, was vor allem bei weicher biologischer Materie vermieden werden soll.
+    Der contact-Modus kann bei besonders empfindlichen Proben größere Schäden verursachen, was vor allem bei weicher biologischer Materie vermieden werden soll.
     Falls die Probe durch einen Flüssigkeitsfilm kontaminiert ist, nehmen Messungen im non-contact-Modus nicht die unterliegende Oberfläche, sondern die adsorbierte Kontamination auf.
 
     Im constant-height Modus wird die Spitze bei einer konstanten Höhe gehalten und die Auslenkung des Cantilevers wird aufgenommen.
@@ -283,7 +313,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
         \begin{figure}[ht]
             \centering\captionsetup{format=plain}
             \includegraphics[width=0.5\textwidth]{bilder/Piezo_Creep.png}
-            \caption{Es ist der Creep nach einem plötzlichen Spannungssprung dargestellt. $Y_{\mathrm{step}}$ ist dabei die gesamte und $\Delta Y$ die durch den Creep verursachte Verschiebung. \cite{Compensation_of_Scanner_Creep}}
+            \caption{Es ist der Creep nach einem plötzlichen Spannungssprung dargestellt. $Y_{\mathrm{step}}$ ist dabei die gesamte und $\upDelta Y$ die durch den Creep verursachte Verschiebung. \cite{Compensation_of_Scanner_Creep}}
             \label{fig:Piezo_Creep}
         \end{figure}
         Um Creep vorzubeugen werden Positionssensoren, siehe \autoref{sec:detektion}, in Verbindung mit einem Feedbackloop genutzt.
