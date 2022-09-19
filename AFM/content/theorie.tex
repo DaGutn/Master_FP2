@@ -31,10 +31,10 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     Wird der Abstand verringert, so ist die Wechselwirkung erst attraktiv, da durch den Überlapp der äußeren offenen Schalen chemische Bindungen entstehen, die die Gesamtenergie minimieren. \\
     \setlength{\columnsep}{15pt}
     \begin{wrapfigure}{r}{0.55\textwidth}
-        \vspace{-0.5cm}
+        % \vspace{-0.5cm} 
         \centering\captionsetup{margin={0.5cm,0cm}, format=plain}
         \includegraphics[width=0.55\textwidth]{bilder/Lennard_Jones_Potential.png}
-        \caption{Hier ist das Lennard-Jones-Potential dargestellt. \cite{voigtlaender}} \vspace*{-0.5cm}
+        \caption{Hier ist das Lennard-Jones-Potential dargestellt. Entnommen und bearbeitet aus \cite{voigtlaender}.} %\vspace*{-0.5cm}
         \label{fig:Lennard_Jones_Potential}
     \end{wrapfigure}
     Bei weiterer Verringerung kommen sich die Spitze und Probe so nah, dass die geschlossenen Orbitale überlappen.
@@ -70,8 +70,8 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
 
 \subsection{Snap-to-Contact}
 \label{sec:Snap}
-    Ein wichtiges Konzept um die Funktionsweise von AFM-Messungen im Contact-Mode zu verstehen ist der Snap-to-Contact bzw. Snap-out-of-Contact der Spitze zur Probenoberfläche.
-    Im dynamischen Modus wird dieser Snap-to-Contact gemieden, da die Oszillation des Cantilevers sonst wegen des schmalen Potentialminimums gestoppt werden würde, mehr dazu in \autoref{sec:messmodi}.
+    Ein wichtiges Konzept um die Funktionsweise von AFM-Messungen zu verstehen, wenn die Spitze auf der Probe aufliegt ist der Snap-to-Contact bzw. Snap-out-of-Contact der Spitze zur Probenoberfläche.
+    Es gibt auch einen anderen \glqq dynamischen\grqq Modus, bei dem dieser Snap-to-Contact gemieden wird, da dabei die Oszillation des Cantilevers sonst wegen des schmalen Potentialminimums gestoppt werden würde, mehr dazu in \autoref{sec:messmodi}.
     Aus diesem Grund werden die Bedingungen für den Snap-to-Contact hier betrachtet.
 
     Der Cantilever an dem die Spitze befestigt ist kann als Feder mit dem Potential
@@ -100,7 +100,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
             \caption{}
             \label{fig:Snap_to_Contact_Kraft}
         \end{subfigure}
-        \caption{\textbf{(a)} Das Lennnard-Jones-Potential für die Spitzen-Proben-WW und ein harmonisches Potential für den Cantilever bei seiner Gleichgewichtsposition $z_0$ bei ausgeschalteter Spitzen-Proben-WW ist dargestellt. \\ \textbf{(b)} Kraft-Abstands-Kurven für verschiedene $z_0$ anhand derer der Snap-to-Contact erklärt wird. \cite{voigtlaender}}
+        \caption{\textbf{(a)} Das Lennnard-Jones-Potential für die Spitzen-Proben-WW und ein harmonisches Potential für den Cantilever bei seiner Gleichgewichtsposition $z_0$ bei ausgeschalteter Spitzen-Proben-WW ist dargestellt. \\ \textbf{(b)} Kraft-Abstands-Kurven für verschiedene $z_0$ anhand derer der Snap-to-Contact erklärt wird. Entnommen und bearbeitet aus \cite{voigtlaender}.}
         \label{fig:Snap_to_Contact}
     \end{figure}
     \FloatBarrier
@@ -139,7 +139,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}
         \includegraphics[width=0.55\textwidth]{bilder/Cantilever_Auslenkung.png}
-        \caption{Das ist die Visualisierung der in der Kraft-Abstands-Kurve geplotteten Koordinaten. \cite{voigtlaender}}
+        \caption{Das ist die Visualisierung der in der Kraft-Abstands-Kurve geplotteten Koordinaten. Entnommen und bearbeitet aus \cite{voigtlaender}.}
         \label{fig:Cantilever_Auslenkung}
     \end{figure}
     \FloatBarrier
@@ -147,38 +147,40 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     Wie es schon in \autoref{sec:Snap} erklärt wurde, passieren Sprünge zwischen den Potentialminima, wobei das Inset in \autoref{fig:Kraft_Abstands_Kurve} zum Verständnis der Ursachen der Sprünge beitragen soll.
     Nach dem Snap-to-Contact von Punkt c zu Punkt d, bewegen sich Spitze und Probe gemeinsam weiter, weil die Probe die Spitze nach oben auslenkt, sodass die Kurve linear steigt.
     Eine weiche Probe würde eindellen und die Kurve würde zumindest in der Nähe von Punkt d eine Steigung kleiner eins besitzen, woraus auf die elastischen Eigenschaften der Probe geschlossen werden kann.
-    \begin{figure}[ht]
+    \vspace{-2cm}
+    \begin{figure}[H]
         \centering\captionsetup{format=plain}
         \includegraphics[width=0.5\textwidth]{bilder/Kraft_Abstands_Kurve.png}
-        \caption{Hier wird eine schematische Kraft-Abstands-Kurve dargestellt, die tatsächlich so aufgenommen werden könnte, wobei blau die Annäherung von Spitze und Probe und rot ihre Entfernung bedeutet. Das Inset ist eine vereinfachte Darstellung der \autoref{fig:Snap_to_Contact_Kraft} zum Erklären der Sprünge von c nach d und f nach a. \cite{voigtlaender}}
+        \caption{Hier wird eine schematische Kraft-Abstands-Kurve dargestellt, die tatsächlich so aufgenommen werden könnte, wobei blau die Annäherung von Spitze und Probe und rot ihre Entfernung bedeutet. Das Inset ist eine vereinfachte Darstellung der \autoref{fig:Snap_to_Contact_Kraft} zum Erklären der Sprünge von c nach d und f nach a. Entnommen und bearbeitet aus \cite{voigtlaender}.}
         \label{fig:Kraft_Abstands_Kurve}
     \end{figure}
     \FloatBarrier
-    Für die Berechnung des Elastizitätsmoduls wird zunächst die Kraft
+    Für die Berechnung des Elastizitätsmoduls wird zunächst die Kraft nach
     \begin{equation}
         F=\frac{2}{\pi}\tan(\alpha)E^*\rho^2
     \end{equation}
-    benötigt, mit der die Spitze auf die Probe drückt.
+    entnommen aus \cite{Elasti} benötigt, mit der die Spitze auf die Probe drückt.
     Dabei wird angenommen, dass die Spitze eine Kegelform hat.
     $\alpha$ bezeichnet hierbei den halben Öffnungswinkel der Cantileverspitze.
     $\rho$ bezeichnet die Eindringtiefe der Spitze in die Oberfläche und $E^*$ die oberflächenelastische Konstante,
     \begin{equation}
         E^*=\frac{E}{1-\nu^2},
     \end{equation}
-    mit der Poissonzahl $\nu$ und dem Elastizitätsmodul $E$ \cite{Elasti}, welches die Elastizität des Materials ausdrückt.
+    mit der Poissonzahl $\nu$ und dem Elastizitätsmodul $E$, welches die Elastizität des Materials ausdrückt.
     Somit lassen sich diese Gleichungen umformen zu
     \begin{equation}
         E=\frac{F\pi(1-\nu^2)}{2\tan(\alpha)\rho^2},
+        \label{eqn:Elastizitaetsmodul}
     \end{equation}
     wobei die Eindringtiefe der Spitze in die Teflon-Oberfläche $\rho$ und die Kraft $F$, mit der die Spitze auf die Probe drückt, aus den Messdaten bestimmt werden müssen.
     
 \subsection{Cantilever und Spitze}
 \label{sec:cantilever}
     \setlength{\columnsep}{25pt}
-    \begin{wrapfigure}{r}{0.4\textwidth} \vspace*{-0.5cm}
+    \begin{wrapfigure}{r}{0.4\textwidth} %\vspace*{-0.5cm}
         \centering\captionsetup{margin={0.5cm,-1cm}, format=plain}
         \includegraphics[width=0.4\textwidth]{bilder/Federkraftkonstante.png}
-        \caption{Das ist die schematische Darstellung einer Spitzen-Proben-WW, als WW des Atoms A und der Spitze. \cite{atomic_force_microscope}} \vspace*{-0.3cm}
+        \caption{Das ist die schematische Darstellung einer Spitzen-Proben-WW, als WW des Atoms A und der Spitze. Entnommen und bearbeitet aus \cite{atomic_force_microscope}} \vspace*{-0.3cm}
         \label{fig:Federkraftkonstante}
     \end{wrapfigure} 
     \FloatBarrier
@@ -197,19 +199,19 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     Im Umkehrschluss heißt das, dass dieser auch im \r{A}ngströmbereich ausgelenkt wird.
     Die erste Bedingung an den Cantilever ist also, dass er eine kleine Federkraftkonstante haben bzw. weich sein soll.
 
-    Außerdem sollte das AFM vor externen Vibrationen, wie z.B. Gebäudeschwingungen von ca. \SI{100}{Hz}, geschützt sein, da AFM-Bilder über längere Zeitskalen aufgenommen werden und solche Vibrationen Satellitenlinien verursachen können.
+    Außerdem sollte das AFM vor externen Vibrationen, wie z.B. Gebäudeschwingungen von ca. \SI{100}{Hz}, geschützt sein, da AFM-Bilder über längere Zeitskalen aufgenommen werden und solche Vibrationen Störlinien verursachen können.
     Dies wird durch eine sehr hohe Resonanzfrequenz des Cantilevers $\gg \SI{10}{kHz}$ erreicht, was die zweite Bedingung an den Cantilever darstellt.
     Zusätzlich sind dadurch hohe Scangeschwindigkeiten möglich.
     
     Beide Bedingungen können nach $\omega_{\mathrm{cant}} = \sqrt{\frac{k}{m}}$ nur gleichzeitig erfüllt sein, wenn die Masse des Cantilevers sehr klein ist.
-    Für eine Frequenz von $\omega_{\mathrm{cant}} = \SI{100}{kHz}$ und eine von Federkonstante $k = \SI{10}{Nm^{-1}}$ muss der Cantilever ca. $\SI{1}{\micro m}$ wiegen, um beide Bedingungen zu erfüllen.
+    Für eine Frequenz von $\omega_{\mathrm{cant}} = \SI{100}{kHz}$ und eine von Federkonstante $k = \SI{10}{Nm^{-1}}$ muss der Cantilever ca. $\SI{1}{\micro g}$ wiegen, um beide Bedingungen zu erfüllen.
 
     Die Spitze sollte einen möglichst kleinen Spitzenradius und einen schmalen Abschluss besitzen, da die Strukturen in den AFM-Bilder immer um die Spitzenbreite verbreitert werden.
     Das gemessene Bild ist also eine Faltung zwischen der Spitzeform und Probentopographie, wie es in \autoref{fig:Spitze_Probe_Faltung} schematisch skizziert ist.
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}
         \includegraphics[width=0.8\textwidth]{bilder/Spitze_Probe_Faltung.png}
-        \caption{Es sind drei Fälle aufgezeigt: \textbf{(a)} eine scharfe Spitze ist nicht notwendig, \textbf{(b)} eine scharfe Spitze und die Spitzenform zur topographischen Interpretation ist notwendig, \textbf{(c)} Selbstabbild der Spitze durch schärfere Strukturen. \cite{AFM_image_artifacts}}
+        \caption{Es sind drei Fälle aufgezeigt: \textbf{(a)} eine scharfe Spitze ist nicht notwendig, \textbf{(b)} eine scharfe Spitze und die Spitzenform zur topographischen Interpretation ist notwendig, \textbf{(c)} Selbstabbild der Spitze durch schärfere Strukturen. Entnommen und bearbeitet aus \cite{AFM_image_artifacts}}
         \label{fig:Spitze_Probe_Faltung}
     \end{figure}
 
@@ -226,7 +228,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
             \vspace{-0.6cm}
             \centering\captionsetup{margin={0.5cm,-1cm}, format=plain}
             \includegraphics[width=0.4\textwidth]{bilder/Viersegmentphotodiode.png}
-            \caption{Schematische Darstellung der Laserreflektionsmethode. \cite{voigtlaender}} \vspace*{-0.3cm}
+            \caption{Schematische Darstellung der Laserreflektionsmethode. Entnommen und bearbeitet aus \cite{voigtlaender}.} \vspace*{-0.3cm}
             \label{fig:Viersegmentphotodiode}
         \end{wrapfigure}
         \FloatBarrier
@@ -298,7 +300,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
         \begin{figure}[ht]
             \centering\captionsetup{format=plain}
             \includegraphics[width=0.5\textwidth]{bilder/Piezo_Hysterese.png}
-            \caption{Es sind Hysteresen für verschiedene maximale Scanlängen bzw. angelegte Spannungen dargestellt. \cite{voigtlaender}}
+            \caption{Es sind Hysteresen für verschiedene maximale Scanlängen bzw. angelegte Spannungen dargestellt. Entnommen und bearbeitet aus \cite{voigtlaender}.}
             \label{fig:Piezo_Hysterese}
         \end{figure}
         Werden große Spannungsbereiche durchlaufen, um größere Proben abzurastern, erhöht sich die Hysterese wie in \autoref{fig:Piezo_Hysterese} gezeigt.
@@ -313,7 +315,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
         \begin{figure}[ht]
             \centering\captionsetup{format=plain}
             \includegraphics[width=0.5\textwidth]{bilder/Piezo_Creep.png}
-            \caption{Es ist der Creep nach einem plötzlichen Spannungssprung dargestellt. $Y_{\mathrm{step}}$ ist dabei die gesamte und $\upDelta Y$ die durch den Creep verursachte Verschiebung. \cite{Compensation_of_Scanner_Creep}}
+            \caption{Es ist der Creep nach einem plötzlichen Spannungssprung dargestellt. $Y_{\mathrm{step}}$ ist dabei die gesamte und $\upDelta Y$ die durch den Creep verursachte Verschiebung. Entnommen und bearbeitet aus \cite{Compensation_of_Scanner_Creep}.}
             \label{fig:Piezo_Creep}
         \end{figure}
         Um Creep vorzubeugen werden Positionssensoren, siehe \autoref{sec:detektion}, in Verbindung mit einem Feedbackloop genutzt.

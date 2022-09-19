@@ -9,20 +9,20 @@
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}
         \includegraphics{plots/Original.pdf} \vspace*{-0.5cm}
-        \caption{Links ist das Spektrum des originallen Laserstrahls dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Gaußglocke (rot gestrichelt) zu sehen.}
+        \caption{Links ist das Spektrum des originalen Laserstrahls dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Summe aus Gaußglocken (rot gestrichelt) zu sehen.}
         \label{fig:Original}
     \end{figure}
     \FloatBarrier
-    Die blaue Autokorrelationsspur in \autoref{fig:Original} (rechts) wird durch eine Gauß-Funktion der Formel
+    Die blaue Autokorrelationsspur in \autoref{fig:Original} (rechts) wird durch eine Summe von zwei Gauß-Funktionen der Formel
     \begin{equation}
         I(t) = A \cdot \exp\left(-4\ln(2)\left(\frac{t}{\Delta\tau}\right)^2\right)
     \end{equation}
     gefittet, wobei $\Delta\tau$ die Halbwertsbreite ist.
-    Die dabei benutzten Werte sind mit einem breiten blauen durchsichtigen Streifen markiert und die Gaußglocke wird durch eine rot gestrichelte Linie dargestellt.
-    Es sind zwei Schultern zu erkennen, weshalb die Gaußglocke an die oberen Werte angepasst wird.
-    Aus dem Fit-Parameter der Halbwertsbreite der Autokorrelationsspur ergibt sich die Pulsdauer
+    Eine Gauß-Funktion fittet den unterliegenden zeitlich breiten Puls und eine den schmallen Peak.
+    Die dabei für den Peak benutzten Werte sind mit einem breiten blauen durchsichtigen Streifen markiert und die Summe der Gaußglocken wird durch eine rot gestrichelte Linie dargestellt.
+    Aus den beiden Fit-Parametern der Halbwertsbreiten der Autokorrelationsspur ergeben sich die Pulsdauern
     \begin{equation*}
-        \Delta \tau_{\mathrm{orig}} \approx 87,6\,\si{\femto\second}
+        \Delta \tau_{\mathrm{orig}} \approx 70,4\,\si{\femto\second} \qquad \Delta \tau_{\mathrm{orig,breit}} \approx 205,6\,\si{\femto\second}
     \end{equation*}
     über die Formel
     \begin{equation}
@@ -31,32 +31,29 @@
 
 \subsection{Pulsdauer mit Bandpassfilter}
     Anschließend wurden Messungen mit einem Bandpassfilter im Strahlengang durchgeführt.
-    Das Einsetzen des $30\,\si{\nano\meter}$-Bandpassfilters ergibt ein Spektrum mit nur einem prominenten Peak.
-    Außerhalb des Bereiches $\pm30\,\si{\nano\meter}$ um die zentrale Wellenlänge werden die Intensitäten so stark gedämpft, dass diese nicht mehr von der Diode registriert werden.
+    Das Einsetzen des $30\,\si{\nano\meter}$-Bandpassfilters ergibt ein Spektrum mit einer Halbwertsbreite von $\qty{30}{\nano\meter}$ mit nur einem prominenten Peak.
     Es ist in \autoref{fig:30nm_Bandpass} (links) jedoch noch ein leichter Neben-Peak bei $1535\,\si{\nano\meter}$ zu erkennen.
     Das liegt daran, dass dieser Neben-Peak innerhalb des $30\,\si{\nano\meter}$-Bereiches liegt und nicht ganz herausgefiltert wird.    
     \vspace*{-0.3cm}
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}
         \includegraphics{plots/30nm_Bandpass.pdf} \vspace*{-0.5cm}
-        \caption{Links ist das Spektrum des Laserstrahls bei Durchgang durch einen $30\,\si{\nano\meter}$-Bandpassfilter dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Gaußglocke (rot gestrichelt) zu sehen.}
+        \caption{Links ist das Spektrum des Laserstrahls bei Durchgang durch einen $30\,\si{\nano\meter}$-Bandpassfilter dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Summe aus Gaußglocken (rot gestrichelt) zu sehen.}
         \label{fig:30nm_Bandpass}
     \end{figure}
     \FloatBarrier
-    In \autoref{fig:30nm_Bandpass} (rechts) sind auch Schultern zu sehen.
-    Diese werden wieder nicht bei der Anpassung der Gaußfunktion betrachtet.
-    In \autoref{fig:12nm_Bandpass} (links) ist nur noch ein scharfer Peak um die zentrale Wellenlänge zu sehen.
-    Es ist zu erkennen, dass die Regression der Autokorrelationsspur hier nur auf einem kleinen Bereich an der Spitze des Peaks beruht.
-    Generell wird der Bereich der im Fit einbezogenen Werte so gewählt, dass die angepasste Funktion den Peak bis leicht unter die Hälfte möglichst genau überlagert.
+    In \autoref{fig:30nm_Bandpass} (rechts) sind auch Schultern zu sehen und es wird wieder eine Summe aus zwei Gaußfunktionen an die Autokorrelationsspur angepasst.
+    In \autoref{fig:12nm_Bandpass} (links), d.h. nach dem Einsetzen eines $12\,\si{\nano\meter}$-Bandpassfilters, ist nur noch ein scharfer Peak um die zentrale Wellenlänge zu sehen.
+    Generell wird der Bereich der im Fit einbezogenen Werte so gewählt, dass die angepassten Funktionen auch den breiten Puls möglichst genau überlagern.
     Die Anpassungen ergeben die Pulsdauern:
     \begin{align*}
-        \Delta \tau_{\mathrm{bandpass,30}} \approx 172,2\,\si{\femto\second} \\
-        \Delta \tau_{\mathrm{bandpass,12}} \approx 285,9\,\si{\femto\second}
+        \Delta \tau_{\mathrm{bandpass,30}} \approx 160,3\,\si{\femto\second} \qquad \Delta \tau_{\mathrm{bandpass,30,breit}} \approx 532,8\,\si{\femto\second} \\
+        \Delta \tau_{\mathrm{bandpass,12}} \approx 268,2\,\si{\femto\second} \qquad \Delta \tau_{\mathrm{bandpass,12,breit}} \approx 579,9\,\si{\femto\second}
     \end{align*}
     \begin{figure}[ht]
         \centering\captionsetup{format=plain}\vspace*{-1cm}
         \includegraphics{plots/12nm_Bandpass.pdf} \vspace*{-0.5cm}
-        \caption{Links ist das Spektrum des Laserstrahls bei Durchgang durch einen $12\,\si{\nano\meter}$-Bandpassfilter dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Gaußglocke (rot gestrichelt) zu sehen.}
+        \caption{Links ist das Spektrum des Laserstrahls bei Durchgang durch einen $12\,\si{\nano\meter}$-Bandpassfilter dargestellt, wobei die zentrale Wellenlänge durch die grau gestrichelte Linie gekennzeichnet ist. Rechts ist die Autokorrelationsspur (blau) mit einer angepassten Summe aus Gaußglocken (rot gestrichelt) zu sehen.}
         \label{fig:12nm_Bandpass}
     \end{figure}
     \FloatBarrier
@@ -71,7 +68,7 @@
     \FloatBarrier
     Hierbei wurden verschiedene dispersive Medien in den Strahlengang eingesetzt.
     Als Erstes wurde ein $12\,\si{\nano\meter}$ dicker Block Si benutzt.
-    Da die keine Filter verwendet werden, ähnelt das Spektrum in \autoref{fig:Si_12mm} sehr dem in \autoref{fig:Original}.
+    Da hier keine Filter verwendet werden, ähnelt das Spektrum in \autoref{fig:Si_12mm} sehr dem in \autoref{fig:Original}.
     Es ist eine deutliche Verbreiterung der Autokorrelationsspur zu erkennen.
     Die zugehörige Pulsdauer ergibt sich zu
     \begin{equation*}
@@ -107,6 +104,7 @@
         \bottomrule
         \end{tabular}
     \end{table}
+    Als Ausdruck der Dispersion, die der Puls aufgrund des Durchgangs durch das Material erfährt, lässt sich die "group velocity dispersion" bestimmen
 
 
 

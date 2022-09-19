@@ -26,7 +26,7 @@ lam, I_spek = np.genfromtxt('data/spektrum_original.SSM', skip_header=3, unpack=
 t, I_auto = np.genfromtxt('data/autokorellation_original.txt', usecols=(1,2), unpack=True)
 I_auto = I_auto/I_auto.max()
 i_max = np.argmax(I_auto)
-t = t-t[i_max]   # in mm
+t = t-t[i_max]   # in ms
 t = 2 * t / (1000 * const.c) * 10**(12)   # in ps
 
 fig, axs = plt.subplots(1, 2, figsize=(6, 2.8))
@@ -36,13 +36,17 @@ axs[0].set_xlabel(r'$\lambda$ [nm]')
 axs[0].set_ylabel(r'$I$ [a.u.]')
 axs[0].legend(bbox_to_anchor=(-0.01, 1.3), loc='upper left')
 
+i_fit_ = 15
+params_, cov_ = curve_fit(gaussFit, np.concatenate((t[:i_max-i_fit_], t[i_max+i_fit_:])), np.concatenate((I_auto[:i_max-i_fit_], I_auto[i_max+i_fit_:])))
+print('Halbwertsbreite original Schulter:  {0:.1f}fs'.format(np.abs(params_[1])*1000 /np.sqrt(2)))
+
 i_fit = 15
-params, cov = curve_fit(gaussFit, t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit])
+params, cov = curve_fit(gaussFit, t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit] - gaussFit(t[i_max-i_fit:i_max+i_fit], *params_))
 print('Halbwertsbreite original:  {0:.1f}fs'.format(np.abs(params[1])*1000 /np.sqrt(2)))
-print(np.abs(np.abs(params[1])*1000 /np.sqrt(2) - 100)/100)
+# print(np.abs(np.abs(params[1])*1000 /np.sqrt(2) - 100)/100)
 
 axs[1].plot(t, I_auto, label='Autokorrelationsspur')
-axs[1].plot(t, gaussFit(t, *params), 'r--', lw=1, label='Gauss-Fit')
+axs[1].plot(t, gaussFit(t, *params) + gaussFit(t, *params_), 'r--', lw=1, label='Summe aus 2 Gauss-Fits')
 axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte')
 axs[1].set_xlabel(r'$t$ [ps]')
 axs[1].set_ylabel(r'$I$ [a.u.]')
@@ -61,7 +65,7 @@ lam, I_spek = np.genfromtxt('data/spektrum_bandpass_1550_30.SSM', skip_header=3,
 t, I_auto = np.genfromtxt('data/autokorrelation_bandpass_1550_30.txt', usecols=(1,2), unpack=True)
 I_auto = I_auto/I_auto.max()
 i_max = np.argmax(I_auto)
-t = t-t[i_max]   # in mm
+t = t-t[i_max]   # in ms
 t = 2 * t / (1000 * const.c) * 10**(12)   # in ps
 
 fig, axs = plt.subplots(1, 2, figsize=(6, 2.8))
@@ -71,13 +75,17 @@ axs[0].set_xlabel(r'$\lambda$ [nm]')
 axs[0].set_ylabel(r'$I$ [a.u.]')
 axs[0].legend(bbox_to_anchor=(-0.01, 1.3), loc='upper left')
 
-i_fit = 15
-params, cov = curve_fit(gaussFit, t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit])
+i_fit_ = 40
+params_, cov_ = curve_fit(gaussFit, np.concatenate((t[:i_max-i_fit_], t[i_max+i_fit_:])), np.concatenate((I_auto[:i_max-i_fit_], I_auto[i_max+i_fit_:])))
+print('Halbwertsbreite 30nm-Bandpass Schulter:  {0:.1f}fs'.format(np.abs(params_[1])*1000 /np.sqrt(2)))
+
+i_fit = 25
+params, cov = curve_fit(gaussFit, t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit] - gaussFit(t[i_max-i_fit:i_max+i_fit], *params_))
 print('Halbwertsbreite 30nm-Bandpass:  {0:.1f}fs'.format(np.abs(params[1])*1000 /np.sqrt(2)))
 
 axs[1].plot(t, I_auto, label='Autokorrelationsspur')
-axs[1].plot(t, gaussFit(t, *params), 'r--', lw=1, label='Gauss-Fit')
-axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte')
+axs[1].plot(t, gaussFit(t, *params) + gaussFit(t, *params_), 'r--', lw=1, label='Summe aus 2 Gauss-Fits')
+axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte des schmalen Pulses')
 axs[1].set_xlabel(r'$t$ [ps]')
 axs[1].set_ylabel(r'$I$ [a.u.]')
 axs[1].set_xlim(-1, 1)
@@ -95,7 +103,7 @@ lam, I_spek = np.genfromtxt('data/spektrum_bandpass_1550_12.SSM', skip_header=3,
 t, I_auto = np.genfromtxt('data/autokorrelation_bandpass_1550_12.txt', usecols=(1,2), unpack=True)
 I_auto = I_auto/I_auto.max()
 i_max = np.argmax(I_auto)
-t = t-t[i_max]   # in mm
+t = t-t[i_max]   # in ms
 t = 2 * t / (1000 * const.c) * 10**(12)   # in ps
 
 fig, axs = plt.subplots(1, 2, figsize=(6, 2.8))
@@ -105,13 +113,17 @@ axs[0].set_xlabel(r'$\lambda$ [nm]')
 axs[0].set_ylabel(r'$I$ [a.u.]')
 axs[0].legend(bbox_to_anchor=(-0.01, 1.3), loc='upper left')
 
-i_fit = 15
-params, cov = curve_fit(gaussFit, t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit])
+i_fit_ = 70
+params_, cov_ = curve_fit(gaussFit, np.concatenate((t[:i_max-i_fit_], t[i_max+i_fit_:])), np.concatenate((I_auto[:i_max-i_fit_], I_auto[i_max+i_fit_:])))
+print('Halbwertsbreite 12nm-Bandpass Schulter:  {0:.1f}fs'.format(np.abs(params_[1])*1000 /np.sqrt(2)))
+
+i_fit = 40
+params, cov = curve_fit(gaussFit, t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit] - gaussFit(t[i_max-i_fit:i_max+i_fit], *params_))
 print('Halbwertsbreite 12nm-Bandpass:  {0:.1f}fs'.format(np.abs(params[1])*1000 /np.sqrt(2)))
 
 axs[1].plot(t, I_auto, label='Autokorrelationsspur')
-axs[1].plot(t, gaussFit(t, *params), 'r--', lw=1, label='Gauss-Fit')
-axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte')
+axs[1].plot(t, gaussFit(t, *params) + gaussFit(t, *params_), 'r--', lw=1, label='Summe aus 2 Gauss-Fits')
+axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte des schmalen Pulses')
 axs[1].set_xlabel(r'$t$ [ps]')
 axs[1].set_ylabel(r'$I$ [a.u.]')
 axs[1].set_xlim(-1, 1)
@@ -129,7 +141,7 @@ lam, I_spek = np.genfromtxt('data/spektrum_Si_12mm.SSM', skip_header=3, unpack=T
 t, I_auto = np.genfromtxt('data/autokorrelation_Si_12mm.txt', usecols=(1,2), unpack=True)
 I_auto = I_auto/I_auto.max()
 i_max = np.argmax(I_auto)
-t = t-t[i_max]   # in mm
+t = t-t[i_max]   # in ms
 t = 2 * t / (1000 * const.c) * 10**(12)   # in ps
 
 fig, axs = plt.subplots(1, 2, figsize=(6, 2.8))
