@@ -43,11 +43,11 @@ print('Halbwertsbreite original Schulter:  {0:.1f}fs'.format(np.abs(params_[1])*
 i_fit = 15
 params, cov = curve_fit(gaussFit, t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit] - gaussFit(t[i_max-i_fit:i_max+i_fit], *params_))
 print('Halbwertsbreite original:  {0:.1f}fs'.format(np.abs(params[1])*1000 /np.sqrt(2)))
-# print(np.abs(np.abs(params[1])*1000 /np.sqrt(2) - 100)/100)
+tau_in = unp.uarray(np.abs(params), np.sqrt(np.diag(cov)))[1]*1000 /np.sqrt(2)
 
 axs[1].plot(t, I_auto, label='Autokorrelationsspur')
 axs[1].plot(t, gaussFit(t, *params) + gaussFit(t, *params_), 'r--', lw=1, label='Summe aus 2 Gauss-Fits')
-axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte')
+axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte des schmalen Peaks')
 axs[1].set_xlabel(r'$t$ [ps]')
 axs[1].set_ylabel(r'$I$ [a.u.]')
 axs[1].set_xlim(-0.7, 0.7)
@@ -85,7 +85,7 @@ print('Halbwertsbreite 30nm-Bandpass:  {0:.1f}fs'.format(np.abs(params[1])*1000 
 
 axs[1].plot(t, I_auto, label='Autokorrelationsspur')
 axs[1].plot(t, gaussFit(t, *params) + gaussFit(t, *params_), 'r--', lw=1, label='Summe aus 2 Gauss-Fits')
-axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte des schmalen Pulses')
+axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte des schmalen Peaks')
 axs[1].set_xlabel(r'$t$ [ps]')
 axs[1].set_ylabel(r'$I$ [a.u.]')
 axs[1].set_xlim(-1, 1)
@@ -123,7 +123,7 @@ print('Halbwertsbreite 12nm-Bandpass:  {0:.1f}fs'.format(np.abs(params[1])*1000 
 
 axs[1].plot(t, I_auto, label='Autokorrelationsspur')
 axs[1].plot(t, gaussFit(t, *params) + gaussFit(t, *params_), 'r--', lw=1, label='Summe aus 2 Gauss-Fits')
-axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte des schmalen Pulses')
+axs[1].plot(t[i_max-i_fit:i_max+i_fit], I_auto[i_max-i_fit:i_max+i_fit], c='#1f77b4', lw=6, alpha=0.4, label='gefittete Werte des schmalen Peaks')
 axs[1].set_xlabel(r'$t$ [ps]')
 axs[1].set_ylabel(r'$I$ [a.u.]')
 axs[1].set_xlim(-1, 1)
@@ -154,8 +154,8 @@ axs[0].legend(bbox_to_anchor=(-0.01, 1.3), loc='upper left')
 i_fit = 25
 i_schief = 0
 params, cov = curve_fit(gaussFit, t[i_max-i_fit+i_schief:i_max+i_fit+i_schief], I_auto[i_max-i_fit+i_schief:i_max+i_fit+i_schief])
-# params_u = unp.uarray(params, np.sqrt(np.diag(cov)))
 print('Halbwertsbreite 12mm-Si-Block:  {0:.1f}fs'.format(np.abs(params[1])*1000 /np.sqrt(2)))
+a_exp = np.abs(params[1])*1000 /np.sqrt(2)
 
 axs[1].plot(t, I_auto, label='Autokorrelationsspur')
 axs[1].plot(t, gaussFit(t, *params), 'r--', lw=1, label='Gauss-Fit')
@@ -200,6 +200,7 @@ for i in np.arange(len(name_numbers1)):
     ax.plot(t_fit, gaussFit1(t_fit+params[2], *params), lw=0.5, label='{0},{1}$\,$mm'.format(name_numbers1[i], name_numbers2[i]))
     print('Halbwertsbreite {0},{1}mm-Glass:  {2:.1f}fs'.format(name_numbers1[i], name_numbers2[i], np.abs(params_u[1])*1000 /np.sqrt(2)))
 
+b_exp = np.abs(params_u[1])*1000 /np.sqrt(2)
 ax.set_xlabel(r'$t$ [ps]')
 ax.set_ylabel(r'$I$ [a.u.]')
 ax.set_xlim(-0.2, 0.2)
@@ -210,5 +211,19 @@ plt.savefig('plots/Glas.pdf')
 plt.close()
 
 
+################################################################################################
+## Theoretische Pulsdauern nach Durchgang berechnen
+def tau_nach(tau, GVD, l):
+    return tau * unp.sqrt(1 + ((4*np.log(2)* GVD * l)/ tau**2)**2)
 
+GVD_Si = ufloat(1260, 140)
+GVD_SF11 = ufloat(33, 3)
+
+a = tau_nach(tau_in, GVD_Si, 12)
+print('{0:.2f}'.format(a))
+print('{0:.4f}'.format((a-a_exp)/a_exp))
+
+b = tau_nach(tau_in, GVD_SF11, 29.83)
+print('{0:.2f}'.format(b))
+print('{0:.4f}'.format((b-b_exp)/b_exp))
 

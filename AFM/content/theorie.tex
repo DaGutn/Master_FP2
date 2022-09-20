@@ -87,7 +87,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     aproximiert werden.
     Um den Snap-to-Contact zu erklären werden nun aus den beiden in \autoref{fig:Lennard_Jones_Potential} dargestellten Potentialen \eqref{eqn:Lennard_Jones_Potential} und \eqref{eqn:harm_Potential} die zugehörigen Kräfte abgeleitet und in die Betrachtung einbezogen.
     Dies ergibt die Kraft-Abstands-Kurven, wie in \autoref{fig:Snap_to_Contact_Kraft} zu erkennen.
-    \begin{figure}
+    \begin{figure}[H]
         \centering
         \begin{subfigure}{0.49\textwidth}
             \includegraphics[width = \textwidth]{bilder/Snap_to_Contact_Potential.png}
@@ -147,8 +147,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     Wie es schon in \autoref{sec:Snap} erklärt wurde, passieren Sprünge zwischen den Potentialminima, wobei das Inset in \autoref{fig:Kraft_Abstands_Kurve} zum Verständnis der Ursachen der Sprünge beitragen soll.
     Nach dem Snap-to-Contact von Punkt c zu Punkt d, bewegen sich Spitze und Probe gemeinsam weiter, weil die Probe die Spitze nach oben auslenkt, sodass die Kurve linear steigt.
     Eine weiche Probe würde eindellen und die Kurve würde zumindest in der Nähe von Punkt d eine Steigung kleiner eins besitzen, woraus auf die elastischen Eigenschaften der Probe geschlossen werden kann.
-    \vspace{-2cm}
-    \begin{figure}[H]
+    \begin{figure}[h]
         \centering\captionsetup{format=plain}
         \includegraphics[width=0.5\textwidth]{bilder/Kraft_Abstands_Kurve.png}
         \caption{Hier wird eine schematische Kraft-Abstands-Kurve dargestellt, die tatsächlich so aufgenommen werden könnte, wobei blau die Annäherung von Spitze und Probe und rot ihre Entfernung bedeutet. Das Inset ist eine vereinfachte Darstellung der \autoref{fig:Snap_to_Contact_Kraft} zum Erklären der Sprünge von c nach d und f nach a. Entnommen und bearbeitet aus \cite{voigtlaender}.}
@@ -177,10 +176,10 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
 \subsection{Cantilever und Spitze}
 \label{sec:cantilever}
     \setlength{\columnsep}{25pt}
-    \begin{wrapfigure}{r}{0.4\textwidth} %\vspace*{-0.5cm}
+    \begin{wrapfigure}{r}{0.4\textwidth}
         \centering\captionsetup{margin={0.5cm,-1cm}, format=plain}
         \includegraphics[width=0.4\textwidth]{bilder/Federkraftkonstante.png}
-        \caption{Das ist die schematische Darstellung einer Spitzen-Proben-WW, als WW des Atoms A und der Spitze. Entnommen und bearbeitet aus \cite{atomic_force_microscope}} \vspace*{-0.3cm}
+        \caption{Das ist die schematische Darstellung einer Spitzen-Proben-WW, als WW des Atoms A und der Spitze. Entnommen und bearbeitet aus \cite{atomic_force_microscope}.} \vspace*{-0.3cm}
         \label{fig:Federkraftkonstante}
     \end{wrapfigure} 
     \FloatBarrier
@@ -204,7 +203,7 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     Zusätzlich sind dadurch hohe Scangeschwindigkeiten möglich.
     
     Beide Bedingungen können nach $\omega_{\mathrm{cant}} = \sqrt{\frac{k}{m}}$ nur gleichzeitig erfüllt sein, wenn die Masse des Cantilevers sehr klein ist.
-    Für eine Frequenz von $\omega_{\mathrm{cant}} = \SI{100}{kHz}$ und eine von Federkonstante $k = \SI{10}{Nm^{-1}}$ muss der Cantilever ca. $\SI{1}{\micro g}$ wiegen, um beide Bedingungen zu erfüllen.
+    Für eine Resonanzfrequenz von $\omega_{\mathrm{cant}} = \SI{100}{kHz}$ und eine von Federkonstante $k = \SI{1}{Nm^{-1}}$ müsste ein Aluminium-Cantilever ca. $\SI{0,1}{\milli g}$ wiegen, um beide Bedingungen zu erfüllen.
 
     Die Spitze sollte einen möglichst kleinen Spitzenradius und einen schmalen Abschluss besitzen, da die Strukturen in den AFM-Bilder immer um die Spitzenbreite verbreitert werden.
     Das gemessene Bild ist also eine Faltung zwischen der Spitzeform und Probentopographie, wie es in \autoref{fig:Spitze_Probe_Faltung} schematisch skizziert ist.
@@ -221,11 +220,10 @@ Vor diesem Hintergrund wurden in diesem Experiment mehrere Proben unter diesen N
     Die Detektionsmethode sollte das System möglichst nicht stören z.B. durch Kraftauswirkung auf den Cantilever oder Erwärmung.
     Im Folgenden werden ein paar verschiedene Methoden erläutert.
 
-    % \newpage
     \subsubsection*{Laserreflektion}
         % \setlength{\columnsep}{50pt}
         \begin{wrapfigure}{r}{0.4\textwidth}
-            \vspace{-0.6cm}
+            \vspace{-1cm}
             \centering\captionsetup{margin={0.5cm,-1cm}, format=plain}
             \includegraphics[width=0.4\textwidth]{bilder/Viersegmentphotodiode.png}
             \caption{Schematische Darstellung der Laserreflektionsmethode. Entnommen und bearbeitet aus \cite{voigtlaender}.} \vspace*{-0.3cm}
