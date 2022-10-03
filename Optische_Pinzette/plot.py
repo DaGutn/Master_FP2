@@ -21,7 +21,7 @@ def laserleistung(A):
 
 ### Aufgabe 1
 d_kugel = 2.06 * 10**(-6)
-pixelgroesse = d_kugel/122
+pixelgroesse = d_kugel / ufloat(122, 4)
 
 ### Aufgabe 2
 ## b)
@@ -41,38 +41,45 @@ plt.savefig('plots/Konversionsfaktoren.pdf')
 # plt.show()
 plt.close()
 
-m_x_mean = np.abs(np.mean(m_x))
-m_y_mean = np.abs(np.mean(m_y))
+m_x_mean = ufloat(np.abs(np.mean(m_x)), np.abs(np.std(m_x)))
+m_y_mean = ufloat(np.abs(np.mean(m_y)), np.abs(np.std(m_y)))
+# m_x_mean = np.abs(np.mean(m_x))
+# m_y_mean = np.abs(np.mean(m_y))
+# print(m_x_mean)
+# print(m_y_mean)
 
-## c)
-z, voltage = np.genfromtxt('data/Diodensumme_zPiezo.txt', skip_header=1, unpack=True)
+brennpunkt = (1.22*975)/1.33*np.sqrt((1.33/1.25)**2 - 1)
+print(brennpunkt)
 
-# ####################################
-# def I_z(z, z_0):
-#     return np.sqrt(1 + (z/z_0)**2) * np.sin(np.arctan(z/z_0))
+# ## c)
+# z, voltage = np.genfromtxt('data/Diodensumme_zPiezo.txt', skip_header=1, unpack=True)
 
-# lam = 975*10**(-9)
-# n=1.33
-# w_0 = 1.22*lam/n * np.sqrt((n/1.25)**2 - 1)
-# z_0 = np.pi*w_0**2/lam *10**(7)
+# # ####################################
+# # def I_z(z, z_0):
+# #     return np.sqrt(1 + (z/z_0)**2) * np.sin(np.arctan(z/z_0))
 
-# params, cov = curve_fit(I_z, z[15:23], z_0)
-# z_fit = np.linspace(28.5, 34)
-# ####################################
+# # lam = 975*10**(-9)
+# # n=1.33
+# # w_0 = 1.22*lam/n * np.sqrt((n/1.25)**2 - 1)
+# # z_0 = np.pi*w_0**2/lam *10**(7)
 
-fig, ax = plt.subplots(figsize=(4.5,3))
-ax.plot(z, voltage, 'x--', color='green')
-# ax.plot(z_fit, I_z(z_fit, *params))
-ax.axvline(33, color='grey', linestyle='dashed', linewidth=2, alpha=0.8, label='Probenoberflächenposition')
+# # params, cov = curve_fit(I_z, z[15:23], z_0)
+# # z_fit = np.linspace(28.5, 34)
+# # ####################################
 
-ax.set_xlabel(r'$z$ [$\mu$m]')
-ax.set_ylabel(r'Diodenspannung [V]')
-ax.legend(loc='best')
+# fig, ax = plt.subplots(figsize=(4.5,3))
+# ax.plot(z, voltage, 'x--', color='green')
+# # ax.plot(z_fit, I_z(z_fit, *params))
+# ax.axvline(33, color='grey', linestyle='dashed', linewidth=2, alpha=0.8, label='Probenoberflächenposition')
 
-plt.tight_layout()
-plt.savefig('plots/Diodensumme.pdf')
-# plt.show()
-plt.close()
+# ax.set_xlabel(r'$z$ [$\mu$m]')
+# ax.set_ylabel(r'Diodenspannung [V]')
+# ax.legend(loc='best')
+
+# plt.tight_layout()
+# plt.savefig('plots/Diodensumme.pdf')
+# # plt.show()
+# plt.close()
 
 ###################################################################################################
 ### Aufgabe 3 Fallensteifigkeit, Boltzmannkonstante
@@ -83,7 +90,7 @@ def computeK(f_0):
     return 3 * np.pi * d_kugel * 8.9*10**(-4) * 2 * np.pi * f_0
 
 def computeK_B(k, x):
-    return np.var(x, 1) * k / 298.15
+    return np.var((x - x.mean()), 1) * k / 298.15
 
 def linear(x, a, b):
     return a*x + b
@@ -108,43 +115,49 @@ def linear(x, a, b):
 # f_max = [1100, 1100, 1100, 1100, 1100]
 # PSD_x_params = np.zeros((len(current), 2))
 # PSD_y_params = np.zeros((len(current), 2))
+# PSD_x_params_u = unp.uarray(np.zeros(len(current)),np.zeros(len(current)))
+# PSD_y_params_u = unp.uarray(np.zeros(len(current)),np.zeros(len(current)))
 # for i in np.arange(len(current)):
-#     PSD_x_params[i], _ = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_x[i][f_min[i]:f_max[i]])
-#     PSD_y_params[i], _ = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_y[i][f_min[i]:f_max[i]])
+#     PSD_x_params[i], PSD_x_cov = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_x[i][f_min[i]:f_max[i]])
+#     PSD_y_params[i], PSD_y_cov = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_y[i][f_min[i]:f_max[i]])
+#     PSD_x_params_u[i] = ufloat(np.abs(PSD_x_params[i][1]), np.sqrt(np.diag(PSD_x_cov)[1]))
+#     PSD_y_params_u[i] = ufloat(np.abs(PSD_y_params[i][1]), np.sqrt(np.diag(PSD_y_cov)[1]))
 
-# # num = 3
-# # frequenz_fit = np.linspace(0, frequenz[num][-1], 10000)
-# # fig, axs = plt.subplots(2, 1, figsize=(6.5,5))
+# num = 3
+# frequenz_fit = np.linspace(0, frequenz[num][-1], 10000)
+# fig, axs = plt.subplots(2, 1, figsize=(6.5,7))
 
-# # axs[0].plot(frequenz[num], PSD_x[num], label=r'Daten PSD$_x$')
-# # axs[0].plot(frequenz_fit, PSD(frequenz_fit, *PSD_x_params[num]), label='Fit')
-# # axs[0].axvspan(f_min[num], f_max[num], color='grey', alpha=0.4)
-# # axs[0].set_xscale('log')
-# # axs[0].set_yscale('log')
-# # axs[0].set_xlim(right=6e4)
-# # axs[0].set_xlabel(r'$f$ [Hz]')
-# # axs[0].set_ylabel(r'PSD$_x$ [ms$^{\frac{1}{2}}$]')
-# # axs[0].legend(loc='best')
+# axs[0].plot(frequenz[num], PSD_x[num], label=r'Daten PSD$_x$')
+# axs[0].plot(frequenz_fit, PSD(frequenz_fit, *PSD_x_params[num]), label='Fit')
+# axs[0].axvspan(f_min[num], f_max[num], color='grey', alpha=0.4)
+# axs[0].set_xscale('log')
+# axs[0].set_yscale('log')
+# axs[0].set_xlim(right=6e4)
+# axs[0].set_xlabel(r'$f$ [Hz]')
+# axs[0].set_ylim(top=1e-5)
+# axs[0].set_ylabel(r'PSD$_x$ [m$\sqrt{s}$]')
+# axs[0].legend(loc='best')
 
-# # axs[1].plot(frequenz[num], PSD_y[num], label=r'Daten PSD$_y$')
-# # axs[1].axvspan(f_min[num], f_max[num], color='grey', alpha=0.4)
-# # axs[1].plot(frequenz_fit, PSD(frequenz_fit, *PSD_y_params[num]), label='Fit')
-# # axs[1].set_xscale('log')
-# # axs[1].set_yscale('log')
-# # axs[1].set_xlim(right=6e4)
-# # axs[1].set_xlabel(r'$f$ [Hz]')
-# # axs[1].set_ylabel(r'PSD$_y$ [ms$^{\frac{1}{2}}$]')
-# # axs[1].legend(loc='best')
+# axs[1].plot(frequenz[num], PSD_y[num], label=r'Daten PSD$_y$')
+# axs[1].axvspan(f_min[num], f_max[num], color='grey', alpha=0.4)
+# axs[1].plot(frequenz_fit, PSD(frequenz_fit, *PSD_y_params[num]), label='Fit')
+# axs[1].set_xscale('log')
+# axs[1].set_yscale('log')
+# axs[1].set_xlim(right=6e4)
+# axs[1].set_xlabel(r'$f$ [Hz]')
+# axs[1].set_ylim(top=1e-5)
+# axs[1].set_ylabel(r'PSD$_y$ [m$\sqrt{s}$]')
+# axs[1].legend(loc='best')
 
-# # plt.tight_layout()
-# # plt.savefig('plots/PSD_keineKraft.pdf')
-# # # plt.show()
-# # plt.close()
+# plt.tight_layout()
+# plt.savefig('plots/PSD_keineKraft.pdf')
+# # plt.show()
+# plt.close()
 
 
 # # Fallensteifigkeit:
-# k_x = computeK(np.abs(PSD_x_params[:,1]))
-# k_y = computeK(np.abs(PSD_y_params[:,1]))
+# k_x = computeK(PSD_x_params_u)
+# k_y = computeK(PSD_y_params_u)
 
 # print('================== Ohne Kraft:')
 # # for i in np.arange(len(current)):
@@ -153,20 +166,18 @@ def linear(x, a, b):
 # for i in np.arange(len(current)):
 #     print('x- und y-Fallensteifigkeit für ' + str(current[i]) + 'mA: {0:.2e}     {1:.2e}'.format(k_x[i], k_y[i]))
 
-# k_x_params, _ = curve_fit(linear, power, k_x)
-# k_y_params, _ = curve_fit(linear, power, k_y)
+# k_x_params, _ = curve_fit(linear, power, noms(k_x))
+# k_y_params, _ = curve_fit(linear, power, noms(k_y))
 
 # fig, ax = plt.subplots(figsize=(5.5,3.5))
-# ax.plot(power, k_x, 'x', label=r'Daten $k_x$')
-# ax.plot(power, k_y, 'x', label=r'Daten $k_y$')
+# ax.plot(power, noms(k_x), 'x', label=r'Daten $k_x$')
+# ax.plot(power, noms(k_y), 'x', label=r'Daten $k_y$')
 # power_fit = np.linspace(50, 200)
 # ax.plot(power_fit, linear(power_fit, *k_x_params), c='C0', ls='dashed', label='Linearer Fit')
 # ax.plot(power_fit, linear(power_fit, *k_y_params), c='C1', ls='dashed', label='Linearer Fit')
-
 # ax.set_xlabel(r'$P$ [mW]')
 # ax.set_ylabel(r'$k$ [N/m]')
 # ax.legend(loc='best')
-
 # plt.tight_layout()
 # plt.savefig('plots/k_keineKraft.pdf')
 # # plt.show()
@@ -186,8 +197,11 @@ def linear(x, a, b):
 #     x.append(x_temp)
 #     y.append(y_temp)
 
-# x = np.array(x / m_x_mean)
-# y = np.array(y / m_y_mean)
+# x = x / noms(m_x_mean)
+# y = y / noms(m_y_mean)
+# print(np.var((y - y.mean()), 1))
+# for i in np.arange(len(current)):
+#     print('x^2 und y^2 für ' + str(current[i]) + 'mA:  {0:.2e}     {1:.2e}'.format(np.var(x[i]-x[i].mean()), np.var(y[i]-y[i].mean())))
 
 # k_B_x = computeK_B(k_x, x*10**(-6))
 # k_B_y = computeK_B(k_y, y*10**(-6))
@@ -198,23 +212,19 @@ def linear(x, a, b):
 # # for i in np.arange(len(current)):
 # #     print('x- und y-Abweichungen für ' + str(current[i]) + 'mA:  {0:.3f}     {1:.3f}'.format((k_B_x[i]-const.k)/const.k, (k_B_y[i]-const.k)/const.k))
 
-# print(const.k)
 # # fig, axs = plt.subplots(2, 1, figsize=(6.5,5))
-# # axs[0].plot(t[num], savgol_filter(x[num], 51, 3), linewidth=1, label=r'Daten $x$')
+# # axs[0].plot(t[num], savgol_filter(x[num], 51, 3), linewidth=1)
 # # axs[0].set_xlabel(r'$t$ [s]')
 # # axs[0].set_ylabel(r'$x$ [$\mu$m]')
-# # axs[0].legend(loc='best')
-# # axs[1].plot(t[num], savgol_filter(y[num], 51, 3), linewidth=1, label=r'Daten $y$')
+# # axs[1].plot(t[num], savgol_filter(y[num], 51, 3), linewidth=1)
 # # axs[1].set_xlabel(r'$t$ [s]')
 # # axs[1].set_ylabel(r'$y$ [$\mu$m]')
-# # axs[1].legend(loc='best')
-
 # # plt.tight_layout()
 # # plt.savefig('plots/pos_keineKraft.pdf')
-# # # plt.show()
+# # plt.show()
 # # plt.close()
 
-#################################################################################################################
+# #################################################################################################################
 # ## b)
 # current = [50, 70, 100, 150, 200]
 # power = laserleistung(current)
@@ -234,32 +244,55 @@ def linear(x, a, b):
 # f_max = [1100, 1100, 1100, 1100, 1100]
 # PSD_x_params = np.zeros((len(current), 2))
 # PSD_y_params = np.zeros((len(current), 2))
+# PSD_x_params_u = unp.uarray(np.zeros(len(current)),np.zeros(len(current)))
+# PSD_y_params_u = unp.uarray(np.zeros(len(current)),np.zeros(len(current)))
 # for i in np.arange(len(current)):
-#     PSD_x_params[i], _ = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_x[i][f_min[i]:f_max[i]])
-#     PSD_y_params[i], _ = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_y[i][f_min[i]:f_max[i]])
+#     PSD_x_params[i], PSD_x_cov = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_x[i][f_min[i]:f_max[i]])
+#     PSD_y_params[i], PSD_y_cov = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_y[i][f_min[i]:f_max[i]])
+#     PSD_x_params_u[i] = ufloat(np.abs(PSD_x_params[i][1]), np.sqrt(np.diag(PSD_x_cov)[1]))
+#     PSD_y_params_u[i] = ufloat(np.abs(PSD_y_params[i][1]), np.sqrt(np.diag(PSD_y_cov)[1]))
+
+# num = 0
+# frequenz_fit = np.linspace(0, frequenz[num][-1], 10000)
+# fig, ax = plt.subplots(figsize=(6.5,3.5))
+
+# ax.plot(frequenz[num], PSD_y[num], label=r'Daten PSD$_y$')
+# ax.axvspan(f_min[num], f_max[num], color='grey', alpha=0.4)
+# ax.plot(frequenz_fit, PSD(frequenz_fit, *PSD_y_params[num]), label='Fit')
+# ax.set_xscale('log')
+# ax.set_yscale('log')
+# ax.set_xlim(right=6e4)
+# ax.set_xlabel(r'$f$ [Hz]')
+# ax.set_ylim(top=1e-1)
+# ax.set_ylabel(r'PSD$_y$ [m$\sqrt{s}$]')
+# ax.legend(loc='best')
+
+# plt.tight_layout()
+# plt.savefig('plots/PSD_mitKraft.pdf')
+# # plt.show()
+# plt.close()
 
 
 # # Fallensteifigkeit:
-# k_x = computeK(np.abs(PSD_x_params[:,1]))
-# k_y = computeK(np.abs(PSD_y_params[:,1]))
+# k_x = computeK(PSD_x_params_u)
+# k_y = computeK(PSD_y_params_u)
 
 # print('================== Mit Kraft:')
-# # for i in np.arange(len(current)):
-# #     print('x- und y-Roll-Off-Frequenz für ' + str(current[i]) + 'mA:  {0:.3e}     {1:.3e}'.format(PSD_x_params[i,1], PSD_y_params[i,1]))
+# for i in np.arange(len(current)):
+#     print('x- und y-Roll-Off-Frequenz für ' + str(current[i]) + 'mA:  {0:.3e}     {1:.3e}'.format(PSD_x_params_u[i], PSD_y_params_u[i]))
 
 # for i in np.arange(len(current)):
 #     print('x- und y-Fallensteifigkeit für ' + str(current[i]) + 'mA:  {0:.2e}     {1:.2e}'.format(k_x[i], k_y[i]))
 
-# k_x_params, _ = curve_fit(linear, power, k_x)
-# k_y_params, _ = curve_fit(linear, power, k_y)
+# k_x_params, _ = curve_fit(linear, power, noms(k_x))
+# k_y_params, _ = curve_fit(linear, np.delete(power,0), noms(np.delete(k_y,0)))
 
 # fig, ax = plt.subplots(figsize=(5.5,3.5))
-# ax.plot(power, k_x, 'x', label=r'Daten $k_x$')
-# ax.plot(power, k_y, 'x', label=r'Daten $k_y$')
+# ax.plot(power, noms(k_x), 'x', label=r'Daten $k_x$')
+# ax.plot(power, noms(k_y), 'x', label=r'Daten $k_y$')
 # power_fit = np.linspace(0, 100)
 # ax.plot(power_fit, linear(power_fit, *k_x_params), c='C0', ls='dashed', label='Linearer Fit')
 # ax.plot(power_fit, linear(power_fit, *k_y_params), c='C1', ls='dashed', label='Linearer Fit')
-
 # ax.set_xlabel(r'$P$ [mW]')
 # ax.set_ylabel(r'$k$ [N/m]')
 # ax.legend(loc='best')
@@ -283,8 +316,11 @@ def linear(x, a, b):
 #     x.append(x_temp)
 #     y.append(y_temp)
 
-# x = x / m_x_mean
-# y = y / m_y_mean
+# x = x / noms(m_x_mean)
+# y = y / noms(m_y_mean)
+
+# for i in np.arange(len(current)):
+#     print('x^2 und y^2 für ' + str(current[i]) + 'mA:  {0:.2e}     {1:.2e}'.format(np.var(x[i]), np.var(y[i])))
 
 # # var = 0
 # # var_mean = np.mean(x[0])
@@ -308,7 +344,7 @@ def linear(x, a, b):
 # print(const.k)
 
 
-###################################################################################################################
+# ###################################################################################################################
 # ## c)
 # current = [50, 70, 100, 150, 200]
 # power = laserleistung(current)
@@ -328,14 +364,36 @@ def linear(x, a, b):
 # f_max = [1100, 1100, 1100, 1100, 1100]
 # PSD_x_params = np.zeros((len(current), 2))
 # PSD_y_params = np.zeros((len(current), 2))
+# PSD_x_params_u = unp.uarray(np.zeros(len(current)),np.zeros(len(current)))
+# PSD_y_params_u = unp.uarray(np.zeros(len(current)),np.zeros(len(current)))
 # for i in np.arange(len(current)):
-#     PSD_x_params[i], _ = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_x[i][f_min[i]:f_max[i]])
-#     PSD_y_params[i], _ = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_y[i][f_min[i]:f_max[i]])
+#     PSD_x_params[i], PSD_x_cov = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_x[i][f_min[i]:f_max[i]])
+#     PSD_y_params[i], PSD_y_cov = curve_fit(PSD, frequenz[i][f_min[i]:f_max[i]], PSD_y[i][f_min[i]:f_max[i]])
+#     PSD_x_params_u[i] = ufloat(np.abs(PSD_x_params[i][1]), np.sqrt(np.diag(PSD_x_cov)[1]))
+#     PSD_y_params_u[i] = ufloat(np.abs(PSD_y_params[i][1]), np.sqrt(np.diag(PSD_y_cov)[1]))
 
+# # num = 2
+# # frequenz_fit = np.linspace(0, frequenz[num][-1], 10000)
+# # fig, ax = plt.subplots(figsize=(6.5,3.5))
+
+# # ax.plot(frequenz[num], PSD_y[num], label=r'Daten PSD$_y$')
+# # ax.axvspan(f_min[num], f_max[num], color='grey', alpha=0.4)
+# # ax.plot(frequenz_fit, PSD(frequenz_fit, *PSD_y_params[num]), label='Fit')
+# # ax.set_xscale('log')
+# # ax.set_yscale('log')
+# # ax.set_xlim(right=6e4)
+# # ax.set_xlabel(r'$f$ [Hz]')
+# # ax.set_ylabel(r'PSD$_y$ [m$\sqrt{s}$]')
+# # ax.legend(loc='best')
+
+# # plt.tight_layout()
+# # plt.savefig('plots/PSD_mitKraft_vortex.pdf')
+# # # plt.show()
+# # plt.close()
 
 # # Fallensteifigkeit:
-# k_x = computeK(np.abs(PSD_x_params[:,1]))
-# k_y = computeK(np.abs(PSD_y_params[:,1]))
+# k_x = computeK(np.abs(PSD_x_params_u))
+# k_y = computeK(np.abs(PSD_y_params_u))
 
 # print('================== Mit Kraft und Vortexretarder:')
 # # for i in np.arange(len(current)):
@@ -344,23 +402,22 @@ def linear(x, a, b):
 # for i in np.arange(len(current)):
 #     print('x- und y-Fallensteifigkeit für ' + str(current[i]) + 'mA:  {0:.2e}     {1:.2e}'.format(k_x[i], k_y[i]))
 
-# k_x_params, _ = curve_fit(linear, power, k_x)
-# k_y_params, _ = curve_fit(linear, power, k_y)
+# k_x_params, _ = curve_fit(linear, np.delete(power,1), noms(np.delete(k_x,1)))
+# k_y_params, _ = curve_fit(linear, np.delete(power,[1,2]), noms(np.delete(k_y,[1,2])))
 
 # fig, ax = plt.subplots(figsize=(5.5,3.5))
-# ax.plot(power, k_x, 'x', label=r'Daten $k_x$')
-# ax.plot(power, k_y, 'x', label=r'Daten $k_y$')
+# ax.plot(power, noms(k_x), 'x', label=r'Daten $k_x$')
+# ax.plot(power, noms(k_y), 'x', label=r'Daten $k_y$')
 # power_fit = np.linspace(0, 100)
 # ax.plot(power_fit, linear(power_fit, *k_x_params), c='C0', ls='dashed', label='Linearer Fit')
 # ax.plot(power_fit, linear(power_fit, *k_y_params), c='C1', ls='dashed', label='Linearer Fit')
-
 # ax.set_xlabel(r'$P$ [mW]')
 # ax.set_ylabel(r'$k$ [N/m]')
 # ax.legend(loc='best')
 
 # plt.tight_layout()
 # plt.savefig('plots/k_mitKraft_vortex.pdf')
-# # plt.show()
+# plt.show()
 # plt.close()
 
 # for i in np.arange(2):
@@ -377,8 +434,11 @@ def linear(x, a, b):
 #     x.append(x_temp)
 #     y.append(y_temp)
 
-# x = x / m_x_mean
-# y = y / m_y_mean
+# x = x / noms(m_x_mean)
+# y = y / noms(m_y_mean)
+
+# for i in np.arange(len(current)):
+#     print('x^2 und y^2 für ' + str(current[i]) + 'mA:  {0:.2e}     {1:.2e}'.format(np.var(x[i]), np.var(y[i])))
 
 # k_B_x = computeK_B(k_x, x*10**(-6))
 # k_B_y = computeK_B(k_y, y*10**(-6))
@@ -389,42 +449,63 @@ def linear(x, a, b):
 # # for i in np.arange(len(current)):
 # #     print('x- und y-Abweichungen für ' + str(current[i]) + 'mA:  {0:.3f}     {1:.3f}'.format((k_B_x[i]-const.k)/const.k, (k_B_y[i]-const.k)/const.k))
 
-# print(const.k)
+print(const.k)
+arrx = [6.98e-24, 5.88e-23, 3.91e-24, 6.42e-24, 3.78e-22, 7.22e-23, 1.35e-23, 1.17e-22, 9.97e-24, 2.28e-22, 9.62e-24, 1.57e-22, 5.35e-24]
+arry = [2.35e-24, 4.66e-23, 2.17e-23, 2.58e-23, 7.59e-23, 1.79e-23, 6.54e-23, 1.18e-23, 9.90e-22, 6.94e-23, 1.05e-23]
+
+arrx_ohne = [6.98e-24, 5.88e-23, 3.91e-24, 6.42e-24]
+arry_ohne = [2.35e-24, 4.66e-23, 2.17e-23, 2.58e-23]
+
+arrx_mit = [3.78e-22, 7.22e-23, 1.35e-23, 1.17e-22, 9.97e-24]
+arry_mit = [7.59e-23, 1.79e-23, 6.54e-23, 1.18e-23]
+
+arrx_mit_vortex = [2.28e-22, 9.62e-24, 1.57e-22, 5.35e-24]
+arry_mit_vortex = [9.90e-22, 6.94e-23, 1.05e-23]
+
+print((np.mean(arrx) - const.k) / const.k)
+print((np.mean(arry) - const.k) / const.k)
+
+print((np.mean(arrx_ohne) - const.k) / const.k)
+print((np.mean(arry_ohne) - const.k) / const.k)
+
+print((np.mean(arrx_mit) - const.k) / const.k)
+print((np.mean(arry_mit) - const.k) / const.k)
+
+print((np.mean(arrx_mit_vortex) - const.k) / const.k)
+print((np.mean(arry_mit_vortex) - const.k) / const.k)
 
 
 ###################################################################################################
 ### Aufgabe 4 Vesikel
 
 ## Vesikelgröße
-vesikel_groesse = 112*pixelgroesse
+vesikel_groesse = pixelgroesse * ufloat(112, 4)
 print('Größe eines Vesikels: {0:.2e}'.format(vesikel_groesse))
 
 ## Vesikelgeschwindigkeit
-I_x, I_y, I_sum = np.genfromtxt('data/Vesikel_Geschwindigkeit1.txt', unpack=True)
-I_sum = I_sum[60000:]
-t = np.arange(len(I_sum))/5000
+# I_x, I_y, I_sum = np.genfromtxt('data/Vesikel_Geschwindigkeit1.txt', unpack=True)
+# I_sum = I_sum[60000:]
+# t = np.arange(len(I_sum))/5000
 
-fig, ax = plt.subplots(figsize=(5.5,3.5))
-ax.plot(t, savgol_filter(I_sum/I_sum.max(), 51, 3))
-# ax.plot(t, I_sum/I_sum.max())
-ax.axvspan(0.25, 0.4, color='grey', alpha=0.4)
+# fig, ax = plt.subplots(figsize=(5.5,3.5))
+# ax.plot(t, savgol_filter(I_sum/I_sum.max(), 51, 3))
+# # ax.plot(t, I_sum/I_sum.max())
+# ax.axvspan(0.25, 0.4, color='grey', alpha=0.4)
+# ax.set_xlabel(r'$t$ [s]')
+# ax.set_ylabel(r'$I$ [a.u.]')
+# plt.tight_layout()
+# plt.savefig('plots/Vesikel_Geschwindigkeit.pdf')
+# # plt.show()
+# plt.close()
 
-ax.set_xlabel(r'$t$ [s]')
-ax.set_ylabel(r'$I$ [a.u.]')
-
-plt.tight_layout()
-plt.savefig('plots/Vesikel_Geschwindigkeit.pdf')
-# plt.show()
-plt.close()
-
-vesikel_geschw = 2*vesikel_groesse/0.15
+vesikel_geschw = 2*vesikel_groesse/ufloat(0.15,0.01)
 print('Geschw. eines Vesikels: {0:.2e}'.format(vesikel_geschw))
 
 ## Bremskraft der Motoren
 current = np.array([180, 210, 180, 220, 190, 200, 160, 180, 190, 230])
 power = laserleistung(current)
-power = np.mean(power)
-print(power)
+power = ufloat(np.mean(power), np.std(power))
+print('{0:.2f}'.format(power))
 
 # var = 0
 # var_mean = np.mean(power)
@@ -432,13 +513,14 @@ print(power)
 # for i in np.arange(len(power)):
 #     var = var + (power[i] - var_mean)**2
 # var = var/(len(power))
-# print(var)
+# print(np.sqrt(var))
 
 k_x_params = np.array([6.45*10**(-8), -2.05*10**(-6)])
 k_y_params = np.array([5.08*10**(-8),  6.96*10**(-6)])
 
 vesikel_k = (k_x_params[0]+k_y_params[0])/2 * power + (k_x_params[1]+k_y_params[1])/2
-print('Fallenstärke eines Vesikels: {0:.2e}'.format(vesikel_k))
+print('Grenzfallenstärke eines Vesikels: {0:.2e}'.format(vesikel_k))
+print('Grenzkraft eines Vesikels: {0:.2e}'.format(vesikel_k * vesikel_groesse))
 
-
-
+k_40 = (k_x_params[0]+k_y_params[0])/2 * 40 + (k_x_params[1]+k_y_params[1])/2
+print('Fallenstärke bei 40mW: {0:.2e}'.format(k_40))

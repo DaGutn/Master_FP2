@@ -3,12 +3,39 @@
 \label{sec:discussion}
 Dieser Versuch war in dem Sinne erfolgreich, ein allgemeines Gefühl für die Maßstäbe und für die bei der Optischen Pinzette involvierten Kräfte zu vermitteln.
 
-Die gelegentlich stark abweichenden Werte bei der Kalibrierung der Fallensteifigkeit liegen wahrscheinlich daran, dass die Kalibrierungsdauer mit $\Delta t_{\mathrm{cal}} = \qty{1}{s}$ zu niedrig eingestellt war und die Quarzkugel in ihrer Brown'schen Bewegung durch andere äußere Einflüsse gestört worden ist.
+Bei den Konversationsfaktoren zwischen der Spannung der Viersegment-Photodiode und der Position im Ortsraum lässt sich keine Abhängigkeit von der Laserleistung feststellen, sodass durchschnittliche Konversationsfaktoren bestimmt wurden.
+Die Messung des Diodensummensignals abhängig von dem z-Piezo-Stufenwert bestätigt, dass es sich bei der benutzten Probe um feste Kügelchen handelt, da die Kurve in \autoref{fig:Diodensumme} keine Oszillationen vor dem Streupeak aufweist.
+Dabei ergibt sich die Position der Probenoberfläche als ca. \qty{2}{\um} von dem Streupeak entfernt.
 
-Die berechneten Boltzmannkonstanten sollten dem Überprüfen der Fallensteifigkeiten dienen und so in ungefähr der gleichen Größenordnung wie der Theoriewert liegen.
-Bei der Fallensteifigkeit sind die meisten Werte in der richtigen Größenordnung und stimmen mit den Werten anderer Praktikumsgruppen grob überein.
-Nach der Umrechnung in die Boltzmannkonstante sind jedoch sehr große Abweichungen zu erkennen.
-Das könnte heißen, dass die Varianz der gemessenen Daten zu groß ist.
+Die gelegentlich stark abweichenden Werte bei der Kalibrierung der Fallensteifigkeit liegen möglicherweise daran, dass die Kalibrierungsdauer mit $\Delta t_{\mathrm{cal}} = \qty{1}{s}$ zu niedrig eingestellt war oder daran, dass die Quarzkugel in ihrer Brown'schen Bewegung durch andere äußere Einflüsse gestört worden ist.
+Weitere mögliche Erklärungen sind, dass sich weitere Quarzkugel in der Nähe aufhielten oder, dass sogar mehrere Kugeln eingefangen wurden bzw. sich im Hintergrund bewegten.
+
+Auch wenn die problematischen Werte der Fallensteifigkeit nicht in Betracht gezogen werden ergeben sich für die drei verschiedenen Messaufbauten lineare Abhängigkeiten von der Laserleistung.
+In \cite{measurement_of_optical_trapping_force_stiffness} wurde auch ein Immersionsmikroskopobjektiv mit 100-facher Vergrößerung benutzt.
+Dort wird die oben genannte Linearität bestätigt und eine Fallensteifigkeit von ca. \qty{20e-6}{\newton\per\metre} bei einer Laserleistung von \qty{40}{mW} bestimmt.
+Die Interpolation in \autoref{fig:k_keineKraft} ergibt bei der selben Laserleistung eine Fallenstärke von ca. \qty{5e-6}{\newton\per\metre}.
+Die Abweichung zur Literatur könnte an der Größe der in dem Paper verwendeten Quarzkügelchen liegen, da diese einen Durchmesser von \qty{14.9}{\um} besitzen und hier Kügelchen der Größe \qty{2.06}{\um} verwendet werden.
+
+Die berechneten Boltzmannkonstanten sollten dem Überprüfen der Fallensteifigkeiten dienen und so in ungefähr der gleichen Größenordnung wie der Theoriewert von \qty{1.38e-23}{\joule\per\kelvin} aus \cite{k_b} liegen.
+Werden die mehr als 3 Größenordnungen abweichenden Werte der Boltzmannkonstanten nicht berücksichtigt ergeben sich für den Messaufbau ohne externe Kräfte Abweichungen $a_{\mathrm{ohne}}$ in x- und y-Richtung von
+\begin{alignat*}{2}
+    a_{\mathrm{ohne,x}} &\approx \qty{38}{\%} \\
+    a_{\mathrm{ohne,y}} &\approx \qty{75}{\%} \;.
+\end{alignat*}
+Die Abweichungen der Boltzmannkonstante für die Messungen mit externer Kraft sind deutlich größer
+\begin{alignat*}{2}
+    a_{\mathrm{mit,x}} &\approx \qty{756}{\%} \\
+    a_{\mathrm{mit,y}} &\approx \qty{210}{\%} \;,
+\end{alignat*}
+wobei hier eine mögliche Fehlerquelle in Form der Piezoelemente dazukommt, die die periodische Bewegung der Probe erzeugen.
+Die Hysterese, als auch der Creep der Piezoelemente kann für die stärker abweichenden Resultate verantwortlich sein.
+Die Asymmetrie zwischen den in x- und y-Richtung bestimmten Boltzmannkonstanten deutet außerdem darauf hin, dass die Bewegung der Piezoelemente in x-Richtung auch die Bewegung in y-Richtung beeinflusst.
+Bei der Messung mit externer Kraft und eingesetzem Vortexretarder ergeben sich die Abweichungen
+\begin{alignat*}{2}
+    a_{\mathrm{mit,x}} &\approx \qty{624}{\%} \\
+    a_{\mathrm{mit,y}} &\approx \qty{2483}{\%} \;.
+\end{alignat*}
+Ein weiterer möglicher Fehler besteht darin, dass bei der Äquipartitionsmethode, die durch den Vortexretarder erzeugte Rotation und die damit verbundenen Effekte vernachlässigt werden.
 
 Die Stokes'sche Fallenkraft konnte aufgrund der technischen Gegebenheiten nicht bestimmt werden, denn dazu wäre das Messen der Flucht-Frequenz $f_{\mathrm{escape}}$ einer Quarzkugel erforderlich gewesen.
 Die Flucht-Frequenz ist die maximale Frequenz der sinusförmigen Oszillation der Stage, bis zu der die Kugel noch von der Optischen Pinzette gehalten werden kann.
@@ -16,7 +43,10 @@ Das Problem lag daran, dass die Amplitude $A$ dieser Schwingung mit steigender F
 Aus diesem Grund konnte die $f_{\mathrm{escape}}$ nicht mehr mit dem bloßen Auge erkannt werden, da sich die Quarzkugel immer in der Falle befand.
 
 Die Charakterisierung der Vesikelbewegung mit Hilfe der Aktin-Myosin-Motoren in einer Zwiebelzelle ist erfolgreich verlaufen und haben zu unserem Verständnis des Vesikeltransports beigetragen.
-Die Messungen der Bremskraft der Myosin-Motoren wurden dadurch erschwert, dass seit Anfang der Messungen ca. 45 Minuten vergangen sind.
+Mithilfe der CCD-Kamera konnte die Größe \qty{1.9(1)}{\um}, als auch die ungefähre Geschwindigkeit \qty{25.2(2.1)}{\um \per \second} der Vesikel bestimmt werden.
+Über die Kalibrierung der Fallensteifigkeit wird dabei aus den Laserleistungen, ab denen die Vesikel nicht mehr von der Optischen Pinzette gehalten werden können, die Grenzfallensteifigkeit berechnet.
+Somit ergibt sich eine Bremskraft der Myosin-Motoren von $F = \qty{14.4(1.5)}{\pico\newton}$.
+Ihre Durchführung wurde dadurch erschwert, dass seit Anfang der Messungen ca. 45 Minuten vergangen sind.
 Das hatte zur Folge, dass die Aktin Fasen nicht mehr leicht zu erkennen waren und die Bereiche, in denen die Vesikel transportiert wurden sich verbreitert haben.
 So wurde es zunehmend schwieriger den Weg der Vesikel zum Abfangen vorauszuahnen.
 Außerdem waren die Faser oft nicht parallel zur Probenoberfläche, sondern gingen auch in die Tiefe, sodass man lange nach geeigneten Faserbereichen suchen musste.
